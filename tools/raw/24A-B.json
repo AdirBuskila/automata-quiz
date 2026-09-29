@@ -1,0 +1,598 @@
+{
+ "examCode": "24A-B",
+ "examLabel": "2024 סמסטר א׳ מועד ב׳",
+ "year": 2024,
+ "examDate": "11.4.2024",
+ "course": "62208",
+ "source": "exam",
+ "files": {
+  "exam": "מבחנים ופתרונות/2024/סמסטר א/מועד ב/אוטומטים- סמס_ א_ מועד ב_ 11.4.2024 מבחן.pdf",
+  "solution": "מבחנים ופתרונות/2024/סמסטר א/מועד ב/אוטומטים- סמס_ א_ מועד ב_ 11.4.2024 פתרון.pdf",
+  "crossChecks": [
+   "tools/detect_keys.py"
+  ]
+ },
+ "contexts": {},
+ "questions": [
+  {
+   "num": 1,
+   "topic": "regex",
+   "question": "איזה ביטוי שקול לביטוי הרגולרי $(1^*(1+0)^*)^*$, מעל הא״ב הבינארי?",
+   "options": [
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $1^*(1^*0^*)^*$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $(1(1+0)^*)^*$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $\\left(1^*(10^*)\\right)^*$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "הביטוי הנתון שקול ל-$(0+1)^*$, וגם $(1^*0^*)^*=(0+1)^*$, ולכן גם $1^*(1^*0^*)^*$. הביטויים בב׳ ובג׳ לא מכילים מחרוזות שמתחילות ב-$0$."
+  },
+  {
+   "num": 2,
+   "topic": "classify",
+   "question": "תהי $L=\\{a^kb^{k\\bmod 3}\\mid k\\ge0\\}$, שפה מעל הא״ב $\\{a,b\\}$.\nלדוגמא, $\\varepsilon,\\ ab,\\ a^5b^2,\\ a^{30}\\in L$ אבל $a^4b^4,\\ a^2b\\notin L$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ סופית",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ רגולרית ואינסופית",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ חסרת הקשר וגם לא-רגולרית",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$\\{a^{3n}\\mid n\\ge0\\}\\subseteq L$ ולכן $L$ אינסופית. $L$ רגולרית: אסל״ד שסופר את מספר ה-$a$ מודולו 3 ואז קורא בדיוק $k\\bmod 3$ אותיות $b$ מזהה אותה (למשל $L=(aaa)^*(\\varepsilon+ab+aabb)$)."
+  },
+  {
+   "num": 3,
+   "topic": "classify",
+   "question": "תהי $L$ שפה מעל הא״ב הבינארי.\nמה מהבאים הוא תנאי **הכרחי** לכך שהשפה $L$ לא-רגולרית?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ היא אינסופית וגם השפה $\\overline{L}$ היא אינסופית",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא סופית או השפה $\\overline{L}$ היא סופית",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ לא מקיימת את התנאי של למת הניפוח לשפות חסרות הקשר",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "אם $L$ סופית היא רגולרית; אם $\\overline{L}$ סופית אז $\\overline{L}$ רגולרית ולכן גם $L$ (סגירות למשלים). לכן כל שפה לא-רגולרית מקיימת את א׳. ב׳ גוררת ש-$L$ רגולרית. ג׳ לא הכרחי: שפת הפלינדרומים לא-רגולרית אבל ח״ה, ולכן מקיימת את למת הניפוח לשפות ח״ה."
+  },
+  {
+   "num": 4,
+   "topic": "classify",
+   "question": "תהי $L=\\{a^kb^mc^i\\mid k\\ge2,\\ m\\ge1,\\ i\\ge0\\}$, שפה מעל הא״ב $\\{a,b,c\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ סופית",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ רגולרית ואינסופית",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ חסרת הקשר וגם לא-רגולרית",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "הביטוי הרגולרי $aaa^*\\cdot bb^*\\cdot c^*$ מתאר את $L$, ולכן היא רגולרית, ובבירור אינסופית."
+  },
+  {
+   "num": 5,
+   "topic": "pumping_reg",
+   "question": "תהי $L=\\{ww^R\\mid w\\in\\Sigma^*\\}$ שפה מעל הא״ב הבינארי.\nכלומר, $L$ היא שפת הפלינדרומים הבינאריים, באורך זוגי.\nרוצים להוכיח שהשפה $L$ היא לא-רגולרית, תוך שימוש בלמת הניפוח לשפות רגולריות. יהי $n\\ge2$ הקבוע המובטח מהלמה.\nאיזו מילה תביא **בהכרח** לסתירה לתנאי למת הניפוח?",
+   "options": [
+    {
+     "type": "math",
+     "value": "0^n0^n",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "0^{n-2}110^{n-2}",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "1^n0^n1^n",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "1^n01101^n",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$1^n01101^n$ היא פלינדרום באורך זוגי. בכל פירוק עם $|xy|\\le n$ מתקיים $y=1^k$, ועבור $i=0$ מספר ה-$1$ בתחילת המילה קטן ממספרם בסופה — סתירה. א׳: הפירוק $y=00$ מקיים את הלמה. ב׳: הפירוק $x=0^{n-2}$, $y=11$ מקיים את הלמה. ג׳: אם $n$ אי-זוגי המילה באורך אי-זוגי ולא שייכת לשפה."
+  },
+  {
+   "num": 6,
+   "topic": "cfl_props",
+   "question": "תהי $L$ שפה כלשהי, מעל הא״ב הבינארי.\nנגדיר: $Z(L)=\\{w\\#w\\mid w\\in L\\}$, מעל הא״ב $\\{0,1,\\#\\}$.\nלדוגמא, אם $1011\\in L$ אז מתקיים $1011\\#1011\\in Z(L)$.\nנתבונן בשתי הטענות הבאות:\n$I$. אם השפה $L$ רגולרית אזי השפה $Z(L)$ רגולרית.\n$II$. אם השפה $L$ חסרת הקשר אזי השפה $Z(L)$ חסרת הקשר.\nאיזה מהסעיפים הבאים נכון?",
+   "options": [
+    {
+     "type": "text",
+     "value": "שתי הטענות $I,\\,II$ הן נכונות.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "שתי הטענות $I,\\,II$ הן לא נכונות.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "טענה $I$ נכונה וגם טענה $II$ לא נכונה.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "טענה $II$ נכונה וגם טענה $I$ לא נכונה.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$I$: עבור $L=1^*$ (רגולרית), $T=\\{1,1^2,1^3,\\dots\\}$ היא קבוצה מפרידה אינסופית ביחס ל-$Z(L)$, ולכן $Z(L)$ לא-רגולרית. $II$: עבור $L$ שפת הפלינדרומים (ח״ה), למת הניפוח לשפות ח״ה עם $w=0^n1^n0^n\\#0^n1^n0^n$ ו-$i=0$ מביאה לסתירה, ולכן $Z(L)$ לא ח״ה."
+  },
+  {
+   "num": 7,
+   "topic": "cfg",
+   "question": "נתון הדקדוק הבא, מעל הא״ב $\\{a,b\\}$. המשתנה ההתחלתי בדקדוק זה הוא $S$:\n$$\\begin{array}{l}S\\to aBa\\\\ B\\to BB\\mid b\\mid\\varepsilon\\end{array}$$\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "לדקדוק זה קיים דקדוק ליניארי ימני שקול",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "לדקדוק זה לא קיים דקדוק ליניארי שמאלי שקול",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "דקדוק זה יוצר שפה לא-חסרת הקשר",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "דקדוק זה יוצר שפה לא-רגולרית",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "הדקדוק יוצר את השפה הרגולרית $ab^*a$. לכל שפה רגולרית קיים דקדוק ליניארי ימני (ובאופן שקול גם שמאלי) שיוצר אותה — ולכן א׳ נכונה וב׳, ד׳ לא. ג׳: הדקדוק הנתון חסר הקשר, ולכן השפה שלו ח״ה."
+  },
+  {
+   "num": 8,
+   "topic": "classify",
+   "question": "תהי $L=\\{a^{n+2}b^{2n}\\mid n\\ge0\\}$, שפה מעל הא״ב $\\{a,b\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ סופית",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ רגולרית ואינסופית",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ חסרת הקשר וגם לא-רגולרית",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L$ לא-רגולרית כי $T=\\{a^2,a^3,a^4,\\dots\\}$ היא קבוצה מפרידה אינסופית ביחס ל-$L$. $L$ ח״ה — הדקדוק $S\\to aaT$, $T\\to aTbb\\mid\\varepsilon$ יוצר אותה."
+  },
+  {
+   "num": 9,
+   "topic": "nerode",
+   "question": "תהי $L$ שפה כלשהי, מעל הא״ב הבינארי.\nאיזו מהטענות הבאות היא טענה נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם $\\mathrm{Rank}(L)<\\infty$ אז $\\mathrm{Rank}(L^*)<\\infty$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אם קיים אס״ד $A$ וקיים אסל״ד $A'$ כך שמתקיים $L=L(A)=L(A')$ אזי כמות המצבים באס״ד $A$ גדולה או שווה מכמות המצבים באסל״ד $A'$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "אם $\\mathrm{Rank}(L)=\\infty$ אז $\\mathrm{Rank}(L^*)=\\infty$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "א׳: לפי משפט נרוד $L$ רגולרית, ולכן גם $L^*$ רגולרית ו-$\\mathrm{Rank}(L^*)<\\infty$. ב׳: מאס״ד עם $n$ מצבים אפשר לבנות אסל״ד שקול עם $2n+1$ מצבים (מצב התחלתי חדש עם מעברי $\\varepsilon$ לשני עותקים). ג׳: עבור שפת הפלינדרומים $\\mathrm{Rank}(L)=\\infty$, אבל $L^*=\\Sigma^*$ (כי $0,1$ פלינדרומים) ו-$\\mathrm{Rank}(\\Sigma^*)=1$."
+  },
+  {
+   "num": 10,
+   "topic": "dfa",
+   "question": "איזו מילה מתקבלת ע״י האס״ד $A$ הבא, מעל הא״ב הבינארי:",
+   "options": [
+    {
+     "type": "math",
+     "value": "111010",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "111011",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "0110",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "11001",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "הריצה על $111010$ עוברת במצבים 1→2→3→2→1→2→1 (ממוספרים משמאל) ומסתיימת במצב ההתחלתי, שהוא מקבל. $111011$ מסתיימת במצב השלישי (לא מקבל), ו-$0110$, $11001$ מגיעות למצב המלכודת הימני.",
+   "image": "images/exams/24A-B-Q10.png"
+  },
+  {
+   "num": 11,
+   "topic": "cfg",
+   "question": "האם קיים דקדוק חסר-הקשר $G$ היוצר את השפה הריקה, מעל הא״ב הבינארי?\nכלומר, האם מתקיים $L(G)=\\emptyset$?",
+   "options": [
+    {
+     "type": "text",
+     "value": "כן, לדוגמא הדקדוק הבא, המכיל משתנה יחיד: $S\\to S101$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "לא, כי כל דקדוק חסר-הקשר חייב להכיל משתנה אחד לפחות",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "לא, כי כל א״ב חייב להכיל אות אחת לפחות",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "לא, כי השפה הריקה היא שפה לא-חסרת הקשר",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "כלל הגזירה היחיד $S\\to S101$ לא מאפשר לסיים גזירה במילה טרמינלית באורך סופי, ולכן השפה שהדקדוק יוצר היא הריקה. בנוסף, השפה הריקה סופית ולכן רגולרית וח״ה — כך שכל שאר הסעיפים שגויים."
+  },
+  {
+   "num": 12,
+   "topic": "classify",
+   "question": "תהי $L_1=\\{a^{4n}\\mid n\\ge0\\}$ ותהי $L_2=\\{b^{4n}\\mid n\\ge0\\}$, שפות מעל הא״ב $\\{a,b\\}$.\nנגדיר $L=L_1\\cdot L_2$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ סופית",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ רגולרית ואינסופית",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ חסרת הקשר וגם לא-רגולרית",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L=\\{a^{4n}b^{4k}\\mid n,k\\ge0\\}$ היא שרשור של שתי שפות רגולריות ולכן רגולרית, ו-$L_1\\subseteq L$ ולכן $L$ אינסופית."
+  },
+  {
+   "num": 13,
+   "topic": "classify",
+   "question": "תהי $L=\\{\\varepsilon,aa,bb,aabb,a^4,b^4,a^4b^4,a^6,b^6,a^6b^6,\\dots\\}$ שפה מעל הא״ב $\\{a,b\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ היא סופית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא רגולרית ואינסופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא חסרת הקשר, וגם היא שפה לא-רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "אילו $L$ הייתה רגולרית, החיתוך שלה עם השפה הרגולרית $aa^*bb^*$ — השפה הלא-רגולרית $\\{a^{2k}b^{2k}\\mid k\\ge1\\}$ — היה רגולרי, סתירה. $L$ ח״ה: $S\\to A\\mid M\\mid B$, $A\\to aaA\\mid\\varepsilon$, $B\\to bbB\\mid\\varepsilon$, $M\\to aaMbb\\mid\\varepsilon$."
+  },
+  {
+   "num": 14,
+   "topic": "nerode",
+   "question": "תהי $L$ השפה הנוצרת ע״י הביטוי הרגולרי $\\Sigma\\Sigma\\Sigma(\\Sigma\\Sigma)^*$, מעל הא״ב $\\{a\\}$.\nכמה מצבים יש באס״ד $A$ עם מספר המצבים המינימלי כך שמתקיים $L(A)=L$?",
+   "options": [
+    {
+     "type": "math",
+     "value": "2",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "3",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "4",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "לפחות 5",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L$ היא שפת המילים באורך אי-זוגי $\\ge3$. יש לה אס״ד עם 4 מצבים (שרשרת של שלושה מצבים ואז מעגל של שני מצבים עם המצב המקבל), ו-$\\{\\varepsilon,a,aa,aaa\\}$ היא קבוצה מפרידה בגודל 4."
+  },
+  {
+   "num": 15,
+   "topic": "cfl_props",
+   "question": "תהי $L$ שפה מעל הא״ב $\\{a,b,c\\}$.\nתהי $replace(z)$ המילה הנוצרת על ידי החלפת כל מופעי האות $a$ במילה $z$ באות $b$.\nנגדיר $R(L)=\\{w\\mid \\exists z\\in L,\\ replace(z)=w\\}$.\nלדוגמא, אם $ac\\in L$, אזי $replace(ac)=bc$. לכן, $bc\\in R(L)$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם השפה $L$ חסרת הקשר אזי השפה $R(L)$ חסרת הקשר",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אם השפה $R(L)$ חסרת הקשר אזי השפה $L$ חסרת הקשר",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "תשובות א + ב נכונות",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל התשובות האחרות לא נכונות",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "א׳: בדקדוק ח״ה שיוצר את $L$ מחליפים כל מופע של $a$ ב-$b$ ומקבלים דקדוק ח״ה שיוצר את $R(L)$. ב׳ (ולכן גם ג׳): עבור $L=\\{a^nb^nc^n\\mid n\\ge0\\}$, שאינה ח״ה, $R(L)=\\{b^{2n}c^n\\mid n\\ge0\\}$ היא ח״ה.",
+   "lockOrder": true
+  },
+  {
+   "num": 16,
+   "topic": "nerode",
+   "question": "נתון האסל״ד $A$, מעל הא״ב הבינארי:\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "math",
+     "value": "\\mathrm{Rank}(L(A))=3",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "\\mathrm{Rank}(L(A))>3",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "\\mathrm{Rank}(L(A))<3",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "שפת האסל״ד היא $\\left(1(0+1)\\right)^*$. יש לה אס״ד עם 3 מצבים (כולל מצב מלכודת), ו-$\\{\\varepsilon,0,1\\}$ היא קבוצה מפרידה בגודל 3 — לכן $\\mathrm{Rank}(L(A))=3$.",
+   "image": "images/exams/24A-B-Q16.png"
+  },
+  {
+   "num": 17,
+   "topic": "classify",
+   "question": "תהי $L=\\{a^mb^mc^k\\mid k\\ge m\\ge0\\}$, שפה מעל הא״ב $\\{a,b,c\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ היא סופית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא רגולרית ואינסופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא חסרת הקשר, וגם היא שפה לא-רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "נניח בשלילה ש-$L$ ח״ה, ויהי $n$ קבוע הניפוח. עבור $w=a^nb^nc^n$ ופירוק $w=xyzuv$ עם $|yzu|\\le n$: אם $yu$ לא מכיל $a$ — ב-$xy^0zu^0v$ מספר ה-$a$ גדול ממספר ה-$b$ או ה-$c$; אם $yu$ לא מכיל $c$ — ב-$xy^2zu^2v$ מספר ה-$a$ או ה-$b$ גדול ממספר ה-$c$. סתירה בשני המקרים."
+  },
+  {
+   "num": 18,
+   "topic": "pda",
+   "question": "נתון האוטומט-מחסנית $M$ הבא, מעל הא״ב הבינארי:\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "המילה $001100$ **לא שייכת** לשפה של $M$ והמילה $10101$ **שייכת** לשפה של $M$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "המילה $001100$ **שייכת** לשפה של $M$ והמילה $10101$ **לא שייכת** לשפה של $M$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "המילה $001100$ **לא שייכת** לשפה של $M$ והמילה $10101$ **לא שייכת** לשפה של $M$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "המילה $001100$ **שייכת** לשפה של $M$ והמילה $10101$ **שייכת** לשפה של $M$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "שפת האוטומט היא שפת כל הפלינדרומים באורך אי-זוגי: הוא דוחף את החצי הראשון, קורא אות אמצעית אחת בלי לשנות את המחסנית, ושולף את החצי השני. $10101$ פלינדרום באורך אי-זוגי ולכן מתקבלת; $001100$ באורך זוגי ולכן לא.",
+   "image": "images/exams/24A-B-Q18.png"
+  }
+ ]
+}

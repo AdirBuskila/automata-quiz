@@ -1,0 +1,795 @@
+{
+ "examCode": "19B-A",
+ "examLabel": "2019 סמסטר ב׳ מועד א׳",
+ "year": 2019,
+ "examDate": "27.6.2019",
+ "course": "62208",
+ "source": "exam",
+ "files": {
+  "exam": "מבחנים ופתרונות/2019/סמסטר ב/מועד א/אוטומטים- סמס_ ב_ מועד א_ 27.6.19 מבחן.pdf",
+  "solution": "מבחנים ופתרונות/2019/סמסטר א/אוטומטים- סמס_ א_ מועד א_ 27.6.19 פתרון.pdf",
+  "crossChecks": [
+   "מבחנים ופתרונות/2019/סמסטר ב/מועד א/אוטומטים- סמס_ ב_ מועד א_ 27.6.19 גרסה 2 פתרון.pdf",
+   "tools/detect_keys.py"
+  ]
+ },
+ "contexts": {},
+ "questions": [
+  {
+   "num": 1,
+   "topic": "regex",
+   "question": "איזו מהמחרוזות הבאות **לא** שייכת לשפה של הביטוי הרגולרי $(1^*01^*0)^*1^*+0^*10^*10^*$?",
+   "options": [
+    {
+     "type": "math",
+     "value": "10001",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "1011101",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "101110",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "00000",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "הביטוי מתאר את המילים שמכילות מספר זוגי של אפסים (החלק $(1^*01^*0)^*1^*$) או בדיוק שתי ספרות $1$ (החלק $0^*10^*10^*$). $10001$ מכילה שתי ספרות $1$, ו-$1011101$, $101110$ מכילות מספר זוגי של אפסים — כולן שייכות. $00000$ מכילה מספר אי-זוגי של אפסים וללא ספרות $1$ — ולכן לא שייכת."
+  },
+  {
+   "num": 2,
+   "topic": "regex",
+   "question": "יהי $r_1=(ab^*)^*ba^*$ ביטוי רגולרי, ויהי $r_2=(a^*ba^*b)^*a^*$ ביטוי רגולרי נוסף.",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L(r_1)$ שווה לשפה $L(r_2)$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(r_2)$ מוכלת ממש בשפה $L(r_1)$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(r_1)$ מוכלת ממש בשפה $L(r_2)$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות א), ב), ג) לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$\\varepsilon\\in L(r_2)\\setminus L(r_1)$ (כל מילה ב-$L(r_1)$ מכילה $b$), ולכן א׳ ו-ב׳ לא נכונות. $ba\\in L(r_1)\\setminus L(r_2)$ (ב-$L(r_2)$ מספר ה-$b$ זוגי), ולכן א׳ ו-ג׳ לא נכונות.",
+   "lockOrder": true
+  },
+  {
+   "num": 3,
+   "topic": "pda",
+   "question": "הומצא מודל של אוטומט מחסנית, שבו **כל** מעבר של פונקציית המעברים $\\Delta$ שמבצע שליפה (pop) של אות מתוך $\\Gamma$ **חייב** לבצע דחיפה (push) של אות מתוך $\\Gamma$. תזכורת: $\\varepsilon\\notin\\Gamma$.\nכל שפה המתקבלת ע״י המודל הנ״ל:",
+   "options": [
+    {
+     "type": "text",
+     "value": "היא שפה ריקה.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "היא שפה סופית, לא-ריקה.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "היא שפה רגולרית, סופית או אינסופית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "היא שפה חסרת הקשר, לא-רגולרית.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "במודל החדש אין מעברי שליפה בלבד ($\\sigma,x\\to\\varepsilon$), ולכן לא ניתן לרוקן את המחסנית; מעבר של שליפה עם דחיפה ($\\sigma,x\\to y$) לא משנה את גובה המחסנית. לפי הפתרון, המחסנית לא תורמת דבר ובפועל האוטומט שקול לאסל״ד — ולכן כל שפה במודל רגולרית. א׳ ו-ב׳ מופרכות ע״י אוטומט עם מצב יחיד מקבל ולולאות $a,\\varepsilon\\to\\varepsilon$ ו-$b,\\varepsilon\\to\\varepsilon$, שמקבל את $\\{a,b\\}^*$."
+  },
+  {
+   "num": 4,
+   "topic": "dfa",
+   "question": "יהיו $A_1,A_2$ **אס״דים**. יהי $A$ אוטומט המכפלה ל**איחוד** של השפות $L(A_1),\\ L(A_2)$.",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם $L(A_1)=\\Sigma^*$ אז $L(A)=L(A_2)$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אם $L(A_1)=\\emptyset$ אז $L(A)=L(A_2)$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "אם $L(A_1)=L(A_2)$ אז כל מצב של $A$ הוא מצב מקבל.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "אם $L(A_1)\\cap L(A_2)=\\emptyset$ אז כל מצב של $A$ הוא מצב מקבל.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L(A)=L(A_1)\\cup L(A_2)$, ולכן אם $L(A_1)$ ריקה אז $L(A)=L(A_2)$. א׳: אם $L(A_1)=\\Sigma^*$ ו-$L(A_2)\\ne\\Sigma^*$ אז $L(A)=\\Sigma^*\\ne L(A_2)$. ג׳, ד׳: אם $L(A)\\ne\\Sigma^*$ אז לא כל מצב של $A$ הוא מקבל."
+  },
+  {
+   "num": 5,
+   "topic": "reg_closure",
+   "question": "כדי להראות ששפה $L$ היא לא-רגולרית:",
+   "options": [
+    {
+     "type": "text",
+     "value": "לא ניתן להשתמש בלמת הניפוח לשפות חסרות הקשר.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אפשר להראות אוטומט מחסנית שמקבל את השפה $L$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "אפשר להראות דקדוק חסר הקשר שמתאים לשפה המשלימה של $L$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "אפשר להראות שקיימת שפה רגולרית $L_r$ כך שהשפה $L\\cap L_r$ היא לא-רגולרית.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "מחלקת השפות הרגולריות סגורה לחיתוך: אילו $L$ הייתה רגולרית, גם $L\\cap L_r$ הייתה רגולרית. א׳ שגויה: שפה שלא מקיימת את למת הניפוח לשפות ח״ה (למשל $\\{a^nb^nc^n\\mid n\\ge0\\}$) היא לא-ח״ה ובפרט לא-רגולרית. ב׳, ג׳ שגויות: ל-$L=\\{a,b\\}^*$ הרגולרית יש אוטומט מחסנית, ולמשלימתה (הריקה) יש דקדוק ח״ה."
+  },
+  {
+   "num": 6,
+   "topic": "dfa",
+   "question": "יהי $A=\\langle\\Sigma,Q,q_0,F,\\delta\\rangle$ אס״ד (אוטומט סופי דטרמיניסטי) שמקבל כל מחרוזת, כלומר $L(A)=\\Sigma^*$.",
+   "options": [
+    {
+     "type": "text",
+     "value": "אין מסלול מכוון שמתחיל במצב $q_0$ ומסתיים במצב $\\in Q\\setminus F$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "מתקיים $|Q|=1$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "מתקיים $|\\Sigma|=1$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "מתקיים $Q=F$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "באס״ד לכל מילה יש מסלול חישוב יחיד. אילו היה מסלול מ-$q_0$ למצב לא-מקבל, המילה שנקראת לאורכו הייתה נדחית — בסתירה ל-$L(A)=\\Sigma^*$. ב׳, ג׳, ד׳ מופרכות ע״י אס״ד מעל $\\{0,1\\}$ שבו כל המצבים הישיגים מקבלים ויש גם מצב לא-מקבל שאינו ישיג מ-$q_0$."
+  },
+  {
+   "num": 7,
+   "topic": "regex",
+   "question": "השפה $L=\\{bab,\\ babab,\\ bababab,\\ \\dots\\}$",
+   "options": [
+    {
+     "type": "text",
+     "value": "מתוארת ע״י הביטוי הרגולרי $ba^*b^*$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "מתוארת ע״י הביטוי הרגולרי $\\left((b)(ab)\\right)^*$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "מתוארת ע״י הביטוי הרגולרי $(\\varepsilon+b)(ab)^*$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "מתוארת ע״י הביטוי הרגולרי $bab(\\varepsilon+ab)^*$",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "כל מילה בשפה היא $bab$ משורשר לרצף של $ab$, כלומר $bab(ab)^*=bab(\\varepsilon+ab)^*$. דוגמאות נגדיות: $baab$ מתוארת ע״י א׳, $bbab$ ע״י ב׳ ו-$\\varepsilon$ ע״י ג׳ — ואף אחת מהן לא ב-$L$."
+  },
+  {
+   "num": 8,
+   "topic": "classify",
+   "question": "נתון הדקדוק הבא, המשתנה ההתחלתי בדקדוק זה הוא $S$:\n$$\\begin{array}{l}S\\to\\varepsilon\\mid SAbAbA\\mid A\\\\ A\\to aA\\mid Aaa\\mid\\varepsilon\\end{array}$$",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה המתאימה לדקדוק היא סופית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה המתאימה לדקדוק היא רגולרית ואינסופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה המתאימה לדקדוק היא חסרת הקשר ולא-רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה המתאימה לדקדוק היא לא-חסרת-הקשר.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$A$ גוזר בדיוק את $a^*$ (הכלל $A\\to Aaa$ לא מוסיף מילים), ולכן הדקדוק גוזר את שפת המילים עם מספר זוגי של $b$-ים, $(a^*ba^*b)^*a^*$ — שפה רגולרית ואינסופית (למשל כל $a^n$ בשפה). מכאן גם ג׳ ו-ד׳ לא נכונות, כי כל שפה רגולרית היא ח״ה."
+  },
+  {
+   "num": 9,
+   "topic": "nerode",
+   "question": "תהי $L=\\{a,aa,aaa\\}$ מעל הא״ב $\\{a,b\\}$.",
+   "options": [
+    {
+     "type": "text",
+     "value": "$\\mathrm{Rank}(L)=4$ כי יש אס״ד עם **4** מצבים לזיהוי $L$ וגם $T=\\{\\varepsilon,a,aa,aaa\\}$ קב׳ מפרידה ביחס ל-$L$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "$\\mathrm{Rank}(L)=5$ כי יש אס״ד עם **5** מצבים לזיהוי $L$ וגם $T=\\{\\varepsilon,a,aa,aaa\\}$ קב׳ מפרידה ביחס ל-$L$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "$\\mathrm{Rank}(L)=5$ כי יש אס״ד עם **5** מצבים לזיהוי $L$ וגם $T=\\{\\varepsilon,a,aa,aaa,aaab\\}$ קב׳ מפרידה ביחס ל-$L$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות א), ב), ג) לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$T=\\{\\varepsilon,a,aa,aaa,aaab\\}$ מפרידה: כל שתי מחרוזות בה ניתנות להפרדה ע״י סיפא מהצורה $a^*$. יש אס״ד עם 5 מצבים (שרשרת $\\varepsilon\\to a\\to aa\\to aaa$ ומצב מלכודת), ולכן $\\mathrm{Rank}(L)=5$. א׳ לא נכונה כי קיימת קבוצה מפרידה בגודל 5; ב׳ לא נכונה כי קבוצה מפרידה בגודל 4 לא מוכיחה $\\mathrm{Rank}(L)=5$.",
+   "lockOrder": true
+  },
+  {
+   "num": 11,
+   "topic": "cfg",
+   "question": "נתון הדקדוק הבא מעל הא״ב $\\{a,b\\}$:\n$$S\\to aSa\\mid bSb\\mid\\varepsilon\\mid b\\mid a\\mid bb\\mid aa$$",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה של הדקדוק היא כל הפלינדרומים.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה של הדקדוק היא כל הפלינדרומים באורך זוגי.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה של הדקדוק היא כל הפלינדרומים באורך אי-זוגי.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה של הדקדוק היא כל המילים שמתחילות ונגמרות באותה האות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "הכללים $S\\to aa\\mid bb$ מיותרים ($aa$ ו-$bb$ נגזרות גם בעזרת $S\\to aSa\\mid bSb\\mid\\varepsilon$), והדקדוק השקול $S\\to aSa\\mid bSb\\mid\\varepsilon\\mid a\\mid b$ גוזר את שפת הפלינדרומים. ב׳ מופרכת ע״י $a$, ג׳ ע״י $aa$, וד׳ ע״י $abaa$ שלא נגזרת."
+  },
+  {
+   "num": 12,
+   "topic": "nerode",
+   "question": "השפה $L=\\{w\\mid \\#_a(w)=\\#_b(w)\\}$ מעל הא״ב $\\{a,b\\}$",
+   "options": [
+    {
+     "type": "text",
+     "value": "היא רגולרית כי קיים ביטוי רגולרי שמתאר אותה.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "היא לא-רגולרית כי $T=\\{a,aa,aba\\}$ היא קבוצה מפרידה ביחס לשפה $L$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "היא לא-רגולרית כי $T=\\{a^kb^k\\mid k\\ge0\\}$ היא קבוצה מפרידה ביחס לשפה $L$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "היא לא-רגולרית כי $T=\\{a^{k^2}\\mid k\\ge0\\}$ היא קבוצה מפרידה ביחס לשפה $L$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "כדי להראות ששפה לא-רגולרית צריך קבוצה מפרידה אינסופית. $T=\\{a^{k^2}\\}$ אינסופית ומפרידה: הסיפא $b^{k^2}$ מפרידה בין $a^{k^2}$ לבין $a^{m^2}$ לכל $m\\ne k$. הקבוצה בב׳ סופית ולכן לא מוכיחה דבר; הקבוצה בג׳ אינסופית אבל לא מפרידה (כל איבריה בשפה ושקולים). מכאן גם א׳ שגויה."
+  },
+  {
+   "num": 13,
+   "topic": "basics",
+   "question": "תהי השפה $L=\\{a^nb^n\\mid n\\ge0\\}$, מהי השפה $L\\cdot L$?",
+   "options": [
+    {
+     "type": "text",
+     "value": "מתקיים $L\\cdot L=\\{a^nb^na^kb^k\\mid k,n\\ge0\\}$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "מתקיים $L\\cdot L=\\{a^nb^na^nb^n\\mid n\\ge0\\}$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "מתקיים $L\\cdot L=\\{a^na^nb^nb^n\\mid n\\ge0\\}$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "מתקיים $L\\cdot L=\\{a^nb^n\\mid n\\ge0\\}$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "שרשור שתי מילים של $L$ נותן $a^nb^n\\cdot a^kb^k$ כאשר $n,k$ בלתי תלויים. המילה $aba^5b^5$ שייכת ל-$L\\cdot L$ ומפריכה את ב׳, ג׳ ו-ד׳."
+  },
+  {
+   "num": 14,
+   "topic": "nfa",
+   "question": "יהי $A$ אסל״ד המכיל 30 מצבים, מתוכם 10 הם מצבים מקבלים. משתמשים באלגוריתם שנלמד בהרצאה כדי לבנות את אוטומט החזקה הדטרמיניסטי $A'$ השקול ל-$A$. מתוך $2^{30}$ המצבים של האס״ד $A'$:",
+   "options": [
+    {
+     "type": "text",
+     "value": "$2^{30}-2^{10}$ הם מצבים מקבלים.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "$2^{30}-2^{20}$ הם מצבים מקבלים.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "$2^{20}-2^{10}$ הם מצבים מקבלים.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "$2^{30}-2^{20}+2^{10}$ הם מצבים מקבלים.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "מצב של אוטומט החזקה (תת-קבוצה של מצבי $A$) מקבל אם״ם הוא מכיל מצב מקבל של $A$. יש 20 מצבים לא-מקבלים ב-$A$, ולכן $2^{20}$ תתי-קבוצות ללא מצב מקבל — ו-$2^{30}-2^{20}$ מצבים מקבלים."
+  },
+  {
+   "num": 15,
+   "topic": "classify",
+   "question": "תהי $L=\\{w\\mid w\\ne w^R\\ \\mathbf{or}\\ \\#_a(w)=\\#_b(b)\\}$ מעל הא״ב $\\{a,b\\}$.",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ היא סופית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא רגולרית ואינסופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא חסרת הקשר אבל לא-רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת-הקשר.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "(ב-$\\#_b(b)$ הכוונה כנראה ל-$\\#_b(w)$; התשובה זהה בשתי הקריאות.) $L$ היא איחוד של שפת המילים שאינן פלינדרום ושל שפה ח״ה נוספת, ומחלקת השפות ח״ה סגורה לאיחוד — לכן $L$ ח״ה. $L$ לא-רגולרית: המשלימה שלה היא הפלינדרומים שלא מקיימים את התנאי השני, והחיתוך של המשלימה עם $a^*ba^*$ הוא $\\{a^nba^n\\mid n\\ge0\\}$ — לא-רגולרית, ולכן (סגירות לחיתוך ולמשלים) גם $L$ לא-רגולרית. בפרט $L$ אינסופית."
+  },
+  {
+   "num": 16,
+   "topic": "cfl_props",
+   "question": "תהי $L=\\{a^nb^nc^n\\mid n\\ge0\\}$ ותהי $L'$ שפה **אינסופית** המקיימת $L'\\subseteq L$. כלומר, השפה האינסופית $L'$ מוכלת ב-$L$.",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L'$ היא רגולרית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L'$ היא חסרת-הקשר, אבל לא רגולרית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L'$ היא לא-חסרת-הקשר.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות א), ב), ג) לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "נניח בשלילה ש-$L'$ ח״ה עם קבוע ניפוח $\\ell$. כיוון ש-$L'$ אינסופית יש בה מילה $a^kb^kc^k$ עם $k\\ge\\ell$. בכל פירוק, $vx$ לא מכיל $a$ או לא מכיל $c$, ולכן אחרי ניפוח עם $i=0$ המילה לא ב-$L$ ובפרט לא ב-$L'$ — סתירה. א׳ ו-ב׳ מופרכות ע״י $L'=L$.",
+   "lockOrder": true
+  },
+  {
+   "num": 17,
+   "topic": "regex",
+   "question": "יהי $A$ האסל״ד הבא:",
+   "options": [
+    {
+     "type": "text",
+     "value": "מתקיים $L(A)=L(a^*(a+ba^*b)^*)$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "מתקיים $L(A)=L(a^*b(a+ba^*b))$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "מתקיים $L(A)=L(a^*b(a+ba^*b)^*)$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "מתקיים $L(A)=L(a^*(a+b^*a^*)^*)$",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "מצב ההתחלה (המקבל) מקבל כל רצף של $a$, ומשם ניתן לשרשר רצפים של $a$ או $ba^*b$ ולחזור למצב המקבל — כלומר מספר זוגי של $b$-ים. $aba\\notin L(A)$ מפריכה את ב׳ ו-ג׳, ו-$abbb\\notin L(A)$ מפריכה את ד׳.",
+   "image": "images/exams/19B-A-Q17.png"
+  },
+  {
+   "num": 18,
+   "topic": "pda",
+   "question": "איזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "לא לכל אוטומט מחסנית דטרמיניסטי קיים אוטומט מחסנית לא-דטרמיניסטי שקול.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "לא לכל אוטומט סופי דטרמיניסטי קיים אוטומט סופי לא-דטרמיניסטי שקול.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "לא לכל אוטומט מחסנית לא-דטרמיניסטי קיים אוטומט מחסנית דטרמיניסטי שקול.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "לא לכל אוטומט סופי לא-דטרמיניסטי קיים אוטומט סופי דטרמיניסטי שקול.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "אוטומטי מחסנית דטרמיניסטיים חלשים ממש מאוטומטי מחסנית לא-דטרמיניסטיים (משפט מההרצאה). א׳, ב׳: כל אוטומט דטרמיניסטי הוא בפרט לא-דטרמיניסטי. ד׳: לכל אסל״ד קיים אוטומט החזקה הדטרמיניסטי השקול לו."
+  },
+  {
+   "num": 19,
+   "topic": "reg_closure",
+   "question": "תהי $L$ שפה **רגולרית** מעל הא״ב $\\{a,b\\}$. נגדיר $L_1=\\{1^n\\mid$ קיימת מילה $w\\in L$ וגם $|w|=n\\}$.\nכלומר, השפה $L_1$ מכילה את המילה $1^n$ אם ורק אם קיימת מילה באורך $n$ בשפה $L$.",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L_1$ היא רגולרית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L_1$ היא רגולרית, רק כאשר השפה $L$ היא סופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L_1$ היא חסרת הקשר, ויתכן שהיא גם לא-רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L_1$ היא לא-חסרת-הקשר.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L$ רגולרית ולכן קיים עבורה אס״ד. נחליף בו כל מעבר עם אות מתוך $\\{a,b\\}$ במעבר עם האות $1$ ונקבל אסל״ד שמקבל את $L_1$ — לכן $L_1$ רגולרית (ובפרט ח״ה). ב׳ מופרכת ע״י $L=a^*$, שעבורה $L_1=\\{1^n\\mid n\\ge0\\}$ — שתיהן רגולריות ואינסופיות."
+  },
+  {
+   "num": 20,
+   "topic": "nerode",
+   "question": "תהי $L$ השפה מעל הא״ב $\\{0,1\\}$ המכילה את כל המילים מאורך $\\ge 2$ שבהן האות לפני האחרונה היא $0$.\nהאס״ד ה**מינימלי** המקבל את השפה $L$ מכיל:",
+   "options": [
+    {
+     "type": "text",
+     "value": "3 מצבים.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "4 מצבים.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "5 מצבים.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "6 מצבים.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$T=\\{00,01,10,11\\}$ היא קבוצה מפרידה בגודל 4 ביחס ל-$L$ (לפי שתי האותיות האחרונות), ולכן אין אס״ד עם פחות מ-4 מצבים. יש אס״ד עם 4 מצבים שזוכר את שתי האותיות האחרונות שנקראו, ולכן המינימלי מכיל בדיוק 4."
+  },
+  {
+   "num": 21,
+   "topic": "cfg",
+   "question": "נתון הדקדוק חסר ההקשר הבא, המשתנה ההתחלתי בדקדוק זה הוא $S$:\n$$\\begin{array}{l}S\\to aSb\\mid aaA\\mid bB\\\\ A\\to a\\mid aA\\mid\\varepsilon\\\\ B\\to b\\mid bB\\end{array}$$",
+   "options": [
+    {
+     "type": "text",
+     "value": "כל דקדוק חסר הקשר שקול חייב להכיל כלל אפסילון.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "כל המילים בשפה הן באורך זוגי.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "כל המילים בשפה הן באורך אי-זוגי.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות א), ב), ג) לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "א׳: $\\varepsilon$ לא בשפה, והדקדוק $S\\to aSb\\mid aaA\\mid aa\\mid bB$, $A\\to a\\mid aA$, $B\\to b\\mid bB$ שקול ואין בו כלל אפסילון. ב׳: $aaa$ בשפה (באורך אי-זוגי). ג׳: $aa$ בשפה (באורך זוגי).",
+   "lockOrder": true
+  },
+  {
+   "num": 22,
+   "topic": "nerode",
+   "question": "יהיו $L_1,L_2$ שפות רגולריות, ותהי $L=\\{w\\mid w\\in L_1\\ \\mathbf{and}\\ w\\in L_2\\}$.",
+   "options": [
+    {
+     "type": "math",
+     "value": "\\mathrm{Rank}(L)\\le\\max(\\mathrm{Rank}(L_1),\\mathrm{Rank}(L_2))",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "\\mathrm{Rank}(L)\\le\\mathrm{Rank}(L_1)+\\mathrm{Rank}(L_2)",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "\\mathrm{Rank}(L)\\le\\mathrm{Rank}(L_1)\\cdot\\mathrm{Rank}(L_2)",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "\\mathrm{Rank}(L)=\\infty",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L=L_1\\cap L_2$. לאוטומט המכפלה לחיתוך יש $\\mathrm{Rank}(L_1)\\cdot\\mathrm{Rank}(L_2)$ מצבים, ולכן האס״ד המינימלי לחיתוך מכיל לכל היותר כמות זו. א׳, ב׳ מופרכות ע״י $L_1$ = מילים באורך זוגי ($\\mathrm{Rank}=2$) ו-$L_2$ = מילים שאורכן כפולה של 3 ($\\mathrm{Rank}=3$): לחיתוך (אורך כפולה של 6) נדרשים 6 מצבים. ד׳: $L$ רגולרית כחיתוך של שפות רגולריות."
+  },
+  {
+   "num": 23,
+   "topic": "pda",
+   "question": "נתון האוטומט-מחסנית $A$ הבא:",
+   "options": [
+    {
+     "type": "text",
+     "value": "המילה $aabab$ **שייכת** לשפה של $A$ והמילה $aaa$ **שייכת** לשפה של $A$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "המילה $aabab$ **לא שייכת** לשפה של $A$ והמילה $aaa$ **שייכת** לשפה של $A$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "המילה $aabab$ **שייכת** לשפה של $A$ והמילה $aaa$ **לא שייכת** לשפה של $A$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "המילה $aabab$ **לא שייכת** לשפה של $A$ והמילה $aaa$ **לא שייכת** לשפה של $A$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$aabab$ מסתיימת ב-$b$: קריאת ה-$b$ האחרון מחליפה $y$ בראש המחסנית ב-$x$, ולכן המחסנית לא ריקה בסוף הקריאה. ב-$aaa$ לא כדאי להשתמש ב-$a,x\\to y$ (את $y$ ניתן להוציא רק עם $b$), ונשארים המעברים $a,\\varepsilon\\to x$ ו-$a,x\\to\\varepsilon$ — אבל $aaa$ באורך אי-זוגי ולכן לא ניתן לרוקן את המחסנית בסוף הקריאה.",
+   "image": "images/exams/19B-A-Q23.png"
+  },
+  {
+   "num": 24,
+   "topic": "pda",
+   "question": "נתון האוטומט-מחסנית $A$ הבא:",
+   "options": [
+    {
+     "type": "text",
+     "value": "המילה $0101$ **שייכת** לשפה של $A$ והמילה $0$ **שייכת** לשפה של $A$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "המילה $0101$ **לא שייכת** לשפה של $A$ והמילה $0$ **שייכת** לשפה של $A$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "המילה $0101$ **שייכת** לשפה של $A$ והמילה $0$ **לא שייכת** לשפה של $A$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "המילה $0101$ **לא שייכת** לשפה של $A$ והמילה $0$ **לא שייכת** לשפה של $A$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "האוטומט מקבל את השפה הרגולרית $0+1+0(1+0)^*0+1(0+1)^*1$: מילים באורך 1, או מילים שהאות הראשונה בהן שווה לאחרונה. לכן $0$ שייכת, ו-$0101$ (מתחילה ב-$0$ ומסתיימת ב-$1$) לא שייכת.",
+   "image": "images/exams/19B-A-Q24.png"
+  },
+  {
+   "num": 25,
+   "topic": "pda",
+   "question": "נתון האוטומט-מחסנית $A$ הבא:",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה של $A$ היא $\\{a^ib^nc^k\\mid i+n=k\\ \\mathbf{and}\\ i,n,k\\ge0\\}$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה של $A$ היא $\\{a^ib^nc^k\\mid i=k+n\\ \\mathbf{and}\\ i,n,k\\ge0\\}$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה של $A$ היא $\\{a^ib^nc^k\\mid i\\ge k+n\\ \\mathbf{and}\\ i,n,k\\ge0\\}$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה של $A$ היא $\\{a^ib^nc^k\\mid i\\ge n\\ \\mathbf{and}\\ i,n,k\\ge0\\}$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "ב-$q_0$ כל $a$ דוחף $x$ או לא דוחף דבר, ב-$q_1$ כל $b$ שולף $x$, וב-$q_2$ ה-$c$-ים נקראים בלי לגעת במחסנית. לכן אפשר לרוקן את המחסנית אם״ם $i\\ge n$, ומספר ה-$c$ חופשי. דוגמאות נגדיות: $bc$ שייכת לשפה בא׳ אבל לא ל-$L(A)$; $abcccc$ שייכת ל-$L(A)$ אבל לא לשפות בב׳ ובג׳.",
+   "image": "images/exams/19B-A-Q25.png"
+  }
+ ]
+}

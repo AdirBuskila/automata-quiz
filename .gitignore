@@ -1,0 +1,12 @@
+tools/node_modules/
+tools/package-lock.json
+tools/package.json
+__pycache__/
+*.pyc
+
+# rendered source pages + screenshots: regenerable, and copies of course material
+tools/raw/*/
+*.pdf
+
+# scratch crops produced while checking figures
+tools/_*.png

@@ -1,0 +1,311 @@
+{
+ "examCode": "MQ1",
+ "examLabel": "בוחן מודל 1",
+ "year": 2025,
+ "course": "62208",
+ "source": "moodle",
+ "files": {
+  "exam": [
+   "מבדקים במודל/בוחן 1/100/שאלה 1.jpg",
+   "מבדקים במודל/בוחן 1/100/שאלה 2.jpg",
+   "מבדקים במודל/בוחן 1/100/שאלה 3.jpg",
+   "מבדקים במודל/בוחן 1/100/שאלה 4.png",
+   "מבדקים במודל/בוחן 1/100/שאלה 5.png",
+   "מבדקים במודל/בוחן 1/100/שאלה 6.png",
+   "מבדקים במודל/שאלות תשפה (חלק עם תשובות נכונות)/1.jpg",
+   "מבדקים במודל/בוחן 1/100/100.docx",
+   "מבדקים במודל/בוחן 1/100/100 (1).docx"
+  ],
+  "solution": [
+   "מבדקים במודל/בוחן 1/100/100 (2).pdf"
+  ],
+  "crossChecks": [
+   "מבדקים במודל/בוחן 1/100/100 (3).pdf"
+  ]
+ },
+ "contexts": {},
+ "questions": [
+  {
+   "num": 1,
+   "topic": "nfa",
+   "question": "נתבונן באסל״ד $A$ ובאסל״ד $B$, המכילים מעברי $\\varepsilon$, מעל הא״ב $\\{a\\}$:\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L(A)$ שווה לשפה $L(B)$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(B)$ מוכלת ממש בשפה $L(A)$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(A)$ מוכלת ממש בשפה $L(B)$",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "moodle-feedback",
+   "official": false,
+   "confidence": "high",
+   "explanation": "ב-$A$ המצב ההתחלתי מקבל, ואחרי מעבר ה-$\\varepsilon$ מגיעים למצב המקבל הימני רק אחרי מספר אי-זוגי של $a$-ים (בין שני המצבים הימניים קוראים $a$ בכל כיוון): $L(A)=\\{\\varepsilon\\}\\cup\\{a^{2k+1}\\mid k\\ge0\\}$. ב-$B$, אחרי ה-$a$ הראשון מעבר ה-$\\varepsilon$ מביא למצב המקבל, ומשם כל $a$ נוסף חוזר אליו: $L(B)=a^*$. לכן $L(A)\\subseteq L(B)$, ו-$aa\\in L(B)\\setminus L(A)$ — ההכלה ממש.",
+   "image": "images/exams/MQ1-Q1.png"
+  },
+  {
+   "num": 2,
+   "topic": "nfa",
+   "question": "נתבונן באסל״ד $A$ ובאסל״ד $B$, המכילים מעברי $\\varepsilon$, מעל הא״ב $\\{a\\}$:\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L(A)$ שווה לשפה $L(B)$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(A)$ מוכלת ממש בשפה $L(B)$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(B)$ מוכלת ממש בשפה $L(A)$",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "moodle-feedback",
+   "official": false,
+   "confidence": "high",
+   "explanation": "ב-$A$ המצב ההתחלתי מקבל, ומגיעים למצב המקבל הימני רק אחרי $aa$; מעבר ה-$\\varepsilon$ חזרה מאפשר לקרוא משם עוד $a$-ים. לכן $L(A)=\\{\\varepsilon\\}\\cup\\{a^k\\mid k\\ge2\\}$, ואילו $L(B)=a^*$. מתקיים $L(A)\\subseteq L(B)$, ו-$a\\in L(B)\\setminus L(A)$ — ההכלה ממש.",
+   "image": "images/exams/MQ1-Q2.png"
+  },
+  {
+   "num": 3,
+   "topic": "basics",
+   "question": "תהי $L_1=\\{a,ab\\}$ ותהי $L_2=\\{\\varepsilon,b,bbb\\}$ שפות מעל הא״ב $\\{a,b\\}$.\nכמה מילים יש בשפה $L_1\\cdot L_2$?",
+   "options": [
+    {
+     "type": "math",
+     "value": "4",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "לפחות 6",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "3",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "5",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "moodle-feedback",
+   "official": false,
+   "confidence": "high",
+   "explanation": "$L_1\\cdot L_2=\\{a,\\ ab,\\ abbb\\}\\cup\\{ab,\\ abb,\\ abbbb\\}$. המילה $ab$ מתקבלת פעמיים ($a\\cdot b$ וגם $ab\\cdot\\varepsilon$), ולכן יש בדיוק 5 מילים שונות: $a,ab,abb,abbb,abbbb$."
+  },
+  {
+   "num": 4,
+   "topic": "basics",
+   "question": "תהי $L_1=\\{a,ab,abb\\}$ ותהי $L_2=\\{\\varepsilon,b\\}$ שפות מעל הא״ב $\\{a,b\\}$.\nכמה מילים יש בשפה $L_1\\cdot L_2$?",
+   "options": [
+    {
+     "type": "text",
+     "value": "לפחות 6",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "5",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "3",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "4",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "moodle-100",
+   "official": false,
+   "confidence": "high",
+   "explanation": "$L_1\\cdot L_2=\\{a,ab\\}\\cup\\{ab,abb\\}\\cup\\{abb,abbb\\}=\\{a,ab,abb,abbb\\}$. המילים $ab$ ו-$abb$ מתקבלות פעמיים, ולכן יש 4 מילים שונות בלבד."
+  },
+  {
+   "num": 5,
+   "topic": "dfa",
+   "question": "איזו מילה מתקבלת על ידי האס״ד הבא, מעל הא״ב הבינארי?",
+   "options": [
+    {
+     "type": "math",
+     "value": "100010",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "010001",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "\\varepsilon",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "010110",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "moodle-feedback",
+   "official": false,
+   "confidence": "high",
+   "explanation": "האס״ד מגיע למצב המקבל (עם לולאת $0,1$) בדיוק כשקוראים שני $1$ רצופים, כלומר $L=\\{0,1\\}^*11\\{0,1\\}^*$. רק $010110$ מכילה $11$; ב-$100010$ וב-$010001$ אין $11$, ו-$\\varepsilon$ נדחית כי המצב ההתחלתי אינו מקבל.",
+   "image": "images/exams/MQ1-Q5.png"
+  },
+  {
+   "num": 6,
+   "topic": "nfa",
+   "question": "איזו מילה מתקבלת על ידי האסל״ד הבא, מעל הא״ב הבינארי?",
+   "options": [
+    {
+     "type": "math",
+     "value": "1010",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "010001",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "100010",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "010110",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "moodle-feedback",
+   "official": false,
+   "confidence": "high",
+   "explanation": "האסל״ד נשאר ב-$q_1$ ו״מנחש״ את ה-$1$ שאחריו נותרו בדיוק עוד שתי אותיות, ולכן הוא מקבל בדיוק את המילים שהאות השלישית מהסוף שלהן היא $1$: $L=\\{0,1\\}^*1\\{0,1\\}^2$. ב-$010110$ שלוש האותיות האחרונות הן $110$ — מתקבלת; ב-$1010$, $010001$ ו-$100010$ האות השלישית מהסוף היא $0$.",
+   "image": "images/exams/MQ1-Q6.png"
+  },
+  {
+   "num": 7,
+   "topic": "nfa",
+   "question": "יהי $A$ אסל״ד ללא מעברי $\\varepsilon$ המכיל $n$ מצבים.\nיהי $B$ אוטומט החזקה השקול לאסל״ד $A$, כך שמתקיים $L(A)=L(B)$.\nנניח כי השתמשנו באלגוריתם הסטנדרטי שנלמד בהרצאה כדי לבנות את $B$.\nכמה מצבים יש לכל היותר באוטומט החזקה $B$?",
+   "options": [
+    {
+     "type": "math",
+     "value": "(2n)!",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "2^n",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "2n",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "n^2",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "moodle-feedback",
+   "official": false,
+   "confidence": "high",
+   "explanation": "בבניית החזקה כל מצב של $B$ הוא תת-קבוצה של קבוצת המצבים של $A$. לקבוצה בגודל $n$ יש $2^n$ תתי-קבוצות, ולכן ל-$B$ יש לכל היותר $2^n$ מצבים."
+  },
+  {
+   "num": 8,
+   "topic": "nfa",
+   "question": "יהי $A$ אסל״ד ללא מעברי $\\varepsilon$ המכיל $n$ מצבים, מתוכם מצב אחד בלבד הוא מצב מקבל.\nיהי $B$ אוטומט החזקה השקול לאסל״ד $A$, כך שמתקיים $L(A)=L(B)$.\nנניח כי השתמשנו באלגוריתם הסטנדרטי שנלמד בהרצאה כדי לבנות את $B$.\nכמה מצבים מקבלים יש לכל היותר באוטומט החזקה $B$?",
+   "options": [
+    {
+     "type": "math",
+     "value": "2^n",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "(n-1)!",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "2^{n-1}",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "n^2",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "moodle-100",
+   "official": false,
+   "confidence": "high",
+   "explanation": "מצב של $B$ (תת-קבוצה של מצבי $A$) הוא מקבל אם״ם הוא מכיל את המצב המקבל היחיד של $A$. תת-קבוצה כזו נקבעת ע״י בחירה חופשית של אילו מ-$n-1$ המצבים האחרים נכללים בה, ולכן יש לכל היותר $2^{n-1}$ מצבים מקבלים."
+  },
+  {
+   "num": 9,
+   "topic": "basics",
+   "question": "קיימת שפה מעל הא״ב הבינארי, שגם היא וגם משלימתה מכילות את המילה הריקה.",
+   "options": [
+    {
+     "type": "text",
+     "value": "נכון",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "לא נכון",
+     "id": "b"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "moodle-feedback",
+   "official": false,
+   "confidence": "high",
+   "explanation": "$L\\cap\\overline{L}=\\emptyset$: כל מילה, ובפרט $\\varepsilon$, שייכת לשפה $L$ או למשלימה $\\overline{L}$ — אבל לא לשתיהן. לכן אין שפה שגם היא וגם משלימתה מכילות את המילה הריקה."
+  }
+ ]
+}

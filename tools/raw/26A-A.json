@@ -1,0 +1,597 @@
+{
+ "examCode": "26A-A",
+ "examLabel": "2026 סמסטר א׳ מועד א׳",
+ "year": 2026,
+ "examDate": "1.2.2026",
+ "course": "62208",
+ "source": "exam",
+ "files": {
+  "exam": "מבחנים ופתרונות/2026/סמסטר א מועד א.pdf",
+  "solution": "מבחנים ופתרונות/2026/סמסטר א מועד א - פתרון.pdf",
+  "crossChecks": [
+   "tools/detect_keys.py"
+  ]
+ },
+ "contexts": {},
+ "questions": [
+  {
+   "num": 1,
+   "topic": "nerode",
+   "question": "תהי $L$ שפה רגולרית אינסופית, מעל הא״ב $\\Sigma=\\{0,1\\}$. יהי $A$ אס״ד עם מספר מצבים **מינימלי** כך שמתקיים $L(A)=L$. בנוסף, נתון שהאס״ד $A$ מכיל 10 מצבים.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "תיתכן קבוצה מפרידה $T$ ביחס לשפה $L$ שמכילה 11 איברים",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "קיימת קבוצה מפרידה $T$ ביחס לשפה $L$ שמכילה 10 איברים",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "כל קבוצה מפרידה $T$ ביחס לשפה $L$ מכילה לכל היותר 9 איברים",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "מהנתון $\\mathrm{Rank}(L)=10$. לכל קבוצה מפרידה $T$ מתקיים $|T|\\le \\mathrm{Rank}(L)$ — ולכן א׳ לא ייתכן. בחירת נציג אחד מכל אחת מ-10 מחלקות השקילות נותנת קבוצה מפרידה בגודל $\\mathrm{Rank}(L)=10$ — ולכן ב׳ נכונה וג׳ לא."
+  },
+  {
+   "num": 2,
+   "topic": "cfg",
+   "question": "תהי $L$ שפת המילים המתוארת ע״י הביטוי הרגולרי $(\\Sigma\\Sigma)^*$, מעל הא״ב $\\Sigma=\\{0,1\\}$.\nאיזה מהדקדוקים הבאים יוצר את השפה $L$?",
+   "options": [
+    {
+     "type": "text",
+     "value": "הדקדוק $S\\to\\varepsilon\\mid S10\\mid S01$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "הדקדוק $S\\to\\varepsilon\\mid 1S0S\\mid 0S1S$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "הדקדוק $S\\to\\varepsilon\\mid SSS\\mid 10S\\mid 01S\\mid 11S\\mid 00S$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L$ היא שפת כל המילים באורך זוגי. המילה $11$ שייכת ל-$L$ אך לא ניתן לגזור אותה בדקדוקים א׳ ו-ב׳. הדקדוק בג׳ שקול לדקדוק $S\\to\\varepsilon\\mid 10S\\mid 01S\\mid 11S\\mid 00S$ (הכלל $S\\to SSS$ לא מוסיף מילים), שיוצר בדיוק את המילים באורך זוגי."
+  },
+  {
+   "num": 3,
+   "topic": "basics",
+   "question": "איזו מהמחרוזות הבאות **לא** שייכת לשפה $L=\\{0\\}^*\\{1\\}^*\\{10\\}^*$, מעל הא״ב $\\Sigma=\\{0,1\\}$?",
+   "options": [
+    {
+     "type": "math",
+     "value": "1110",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "0011",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "0100",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל המחרוזות שייכות לשפה $L$",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$1110=\\varepsilon\\cdot 11\\cdot 10$ וגם $0011=00\\cdot 11\\cdot\\varepsilon$ שייכות ל-$L$. אבל $100$ לא שייכת ל-$\\{1\\}^*\\{10\\}^*$, ולכן $0100\\notin L$."
+  },
+  {
+   "num": 4,
+   "topic": "cfl_props",
+   "question": "בהינתן שפה $L$ כלשהי, מעל הא״ב $\\Sigma=\\{a,b,c\\}$, נגדיר את השפה הבאה:\n$$Z(L)=L\\cdot\\Sigma^*\\cdot L$$\nנתבונן בשתי הטענות הבאות:\n$I$. אם השפה $L$ היא חסרת הקשר אזי השפה $Z(L)$ היא חסרת הקשר.\n$II$. אם השפה $Z(L)$ היא לא-רגולרית אזי השפה $L$ היא לא-רגולרית.\nאיזה מהסעיפים הבאים נכון?",
+   "options": [
+    {
+     "type": "text",
+     "value": "שתי הטענות $I,\\,II$ הן נכונות.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "שתי הטענות $I,\\,II$ הן לא נכונות.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "טענה $I$ נכונה וגם טענה $II$ לא נכונה.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "טענה $II$ נכונה וגם טענה $I$ לא נכונה.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "טענה $I$: מחלקת השפות חסרות ההקשר סגורה לשרשור, ו-$\\Sigma^*$ רגולרית ובפרט ח״ה — לכן $Z(L)$ ח״ה. טענה $II$: אם $L$ רגולרית אז גם $Z(L)$ רגולרית (סגירות לשרשור), סתירה — לכן $L$ לא-רגולרית."
+  },
+  {
+   "num": 5,
+   "topic": "pumping_reg",
+   "question": "תהי $L=\\{w\\in\\{a,b,c\\}^*\\mid \\#_a(w)\\ge\\#_b(w)\\}$, שפה מעל הא״ב $\\Sigma=\\{a,b,c\\}$.\nלדוגמה, $\\varepsilon,\\ abccc,\\ cccbaa,\\ accc\\in L$ אבל $ccabb,\\ b\\notin L$.\nרוצים להוכיח שהשפה $L$ היא לא-רגולרית, תוך שימוש בלמת הניפוח לשפות רגולריות. נגדיר את $n$ להיות הקבוע המובטח בלמה.\nאיזו מילה תביא **בהכרח** לסתירה לתנאי למת הניפוח?",
+   "options": [
+    {
+     "type": "math",
+     "value": "a^{2n}b^nc^{2n}",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "abc^{2n}",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "c^na^nb^n",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "a^nc^nb^n",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "ב-$a^nc^nb^n$ כל פירוק עם $|xy|\\le n$ נותן $y=a^k$ ($k\\ge1$); עבור $i=0$ מספר ה-$a$ יורד מתחת ל-$n$ בעוד מספר ה-$b$ נשאר $n$ — סתירה. בשאר המילים יש פירוק שכן מקיים את הלמה: ב-א׳ $y=a^n$ (עודף ה-$a$ שומר על השייכות), ב-ב׳ $y=ab$, ב-ג׳ $y=c^n$."
+  },
+  {
+   "num": 6,
+   "topic": "classify",
+   "question": "איזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם $L\\subseteq\\{a^nb^n\\mid n\\ge0\\}$ אז השפה $L$ היא לא-רגולרית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אם $L\\subseteq L'$ וגם השפה $L$ היא אינסופית אז השפה $L'$ היא לא-רגולרית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "אם $L\\subseteq L'$ וגם שתי השפות $L,L'$ הן אינסופיות אז ייתכן שהשפה $L'$ היא לא-רגולרית וגם שהשפה $L$ היא רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "א׳ מופרכת ע״י $L=\\{ab,\\ a^2b^2\\}$ — סופית ולכן רגולרית. ב׳ מופרכת ע״י $L=L'=\\Sigma^*$. ג׳ נכונה: למשל $L=a^*$ (רגולרית) ו-$L'=\\{w\\mid \\#_a(w)\\ge\\#_b(w)\\}$ (לא-רגולרית), ו-$L\\subseteq L'$."
+  },
+  {
+   "num": 7,
+   "topic": "pda",
+   "question": "נתון האוטומט-מחסנית $M$ הבא, מעל הא״ב $\\Sigma=\\{0,1\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "המילה $00111$ **שייכת** לשפה של $M$ והמילה $1101$ **שייכת** לשפה של $M$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "המילה $00111$ **לא שייכת** לשפה של $M$ והמילה $1101$ **שייכת** לשפה של $M$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "המילה $00111$ **שייכת** לשפה של $M$ והמילה $1101$ **לא שייכת** לשפה של $M$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "המילה $00111$ **לא שייכת** לשפה של $M$ והמילה $1101$ **לא שייכת** לשפה של $M$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "השפה של האוטומט היא $\\Sigma^*$: המילה הריקה מתקבלת מיד במצב ההתחלתי (שהוא מקבל), וכל מילה לא-ריקה מתקבלת ע״י שרשור של תתי-מסלולים באורך 3 — קריאת אות ב-$q_0$ תוך דחיפת $A$, מעבר $\\varepsilon,A\\to\\varepsilon$ ל-$q_1$, וחזרה $\\varepsilon,\\varepsilon\\to\\varepsilon$ ל-$q_0$.",
+   "image": "images/exams/26A-A-Q7.png"
+  },
+  {
+   "num": 8,
+   "topic": "nerode",
+   "question": "תהי $L$ שפת כל המילים המתוארת ע״י הביטוי הרגולרי הבא, מעל הא״ב $\\Sigma=\\{0,1\\}$:\n$$(0\\cdot(0+1)^*\\cdot0)+(1\\cdot(0+1)^*\\cdot1)$$\nכמה מצבים יש באס״ד $A$ עם מספר המצבים המינימלי כך שמתקיים $L(A)=L$?",
+   "options": [
+    {
+     "type": "math",
+     "value": "3",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "4",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "5",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "לפחות 6",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L$ = מילים באורך $\\ge2$ שמתחילות ומסתיימות באותה אות. $T=\\{\\varepsilon,0,00,1,11\\}$ היא קבוצה מפרידה בגודל 5, ויש אס״ד עם 5 מצבים (מצב התחלתי + שני ענפים של שני מצבים לפי האות הראשונה) — לכן $\\mathrm{Rank}(L)=5$."
+  },
+  {
+   "num": 9,
+   "topic": "classify",
+   "question": "נתון הדקדוק $G$ הבא, מעל הא״ב $\\Sigma=\\{a,b\\}$. המשתנה ההתחלתי בדקדוק זה הוא $S$:\n$$S\\to aaSb\\mid aSb\\mid\\varepsilon$$\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L(G)$ היא סופית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(G)$ היא רגולרית ואינסופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(G)$ היא חסרת הקשר אבל לא-רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(G)$ היא לא-חסרת-הקשר.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "השפה ח״ה כי יש דקדוק ח״ה שיוצר אותה. היא לא-רגולרית: $T=\\{a^2,a^4,a^6,\\dots\\}$ היא קבוצה מפרידה אינסופית (הסיפא $b^k$ מפרידה בין $a^{2i}$ לבין $a^{2k}$ לכל $i<k$)."
+  },
+  {
+   "num": 10,
+   "topic": "cfg",
+   "question": "נתון הדקדוק $G$ הבא, מעל הא״ב $\\Sigma=\\{0,1\\}$. המשתנה ההתחלתי בדקדוק זה הוא $S$:\n$$\\begin{array}{l}S\\to AB\\\\ A\\to 0A\\mid 0\\mid B\\\\ B\\to 1B\\mid 1\\mid A\\end{array}$$\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $\\Sigma^*$ מוכלת ממש בשפה $L(G)$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(G)$ מוכלת ממש בשפה $\\Sigma\\cdot\\Sigma$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(G)$ מוכלת ממש בשפה $(\\Sigma\\cdot\\Sigma)^*$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "א׳: המילה הריקה שייכת ל-$\\Sigma^*$ אבל לא ל-$L(G)$ (ובנוסף $\\Sigma^*$ לא יכולה להיות מוכלת ממש באף שפה מעל $\\Sigma$). ב׳, ג׳: המילה $001$ שייכת ל-$L(G)$ אבל לא ל-$\\Sigma\\cdot\\Sigma$ (מילים באורך 2) ולא ל-$(\\Sigma\\cdot\\Sigma)^*$ (מילים באורך זוגי)."
+  },
+  {
+   "num": 11,
+   "topic": "regex",
+   "question": "איזה ביטוי רגולרי מתאר את השפה של האסל״ד $A$ הבא, מעל הא״ב $\\Sigma=\\{a,b,c\\}$?",
+   "options": [
+    {
+     "type": "math",
+     "value": "(a^*+b^*)c^*+\\varepsilon",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "(a+b+c)^*",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "\\left((a^*+b^*)c\\right)^*+\\varepsilon",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "(a+b)^*c^*",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "השפה של האסל״ד היא $\\Sigma^*$: המילה הריקה מתקבלת ע״י המצב ההתחלתי, ולכל אות קיים מצב שבו ניתן לקרוא אותה ($q_1,q_2,q_3$) וניתן להגיע מכל מצב לכל מצב אחר במסלול של מסעי $\\varepsilon$. א׳, ד׳ מופרכים כי שם $c$ יכול להופיע רק בסוף המילה; ג׳ מופרך כי שם $c$ חייב להופיע בכל מילה לא-ריקה.",
+   "image": "images/exams/26A-A-Q11.png"
+  },
+  {
+   "num": 12,
+   "topic": "cfl_props",
+   "question": "נגדיר את שתי השפות הבאות, מעל הא״ב $\\Sigma=\\{a,b,c\\}$:\n$$\\begin{array}{l}L_1=\\{a^nb^nc^n\\mid n\\ge0\\}\\\\ L_2=\\{a^k\\mid k\\ge0\\}\\end{array}$$\nנתבונן בשתי הטענות הבאות:\n$I$. השפה $L_1\\cdot L_2$ היא חסרת הקשר.\n$II$. השפה $L_2\\cdot L_1$ היא חסרת הקשר.\nאיזה מהסעיפים הבאים נכון?",
+   "options": [
+    {
+     "type": "text",
+     "value": "שתי הטענות $I,\\,II$ הן נכונות.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "שתי הטענות $I,\\,II$ הן לא נכונות.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "טענה $I$ נכונה וגם טענה $II$ לא נכונה.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "טענה $II$ נכונה וגם טענה $I$ לא נכונה.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$I$: אילו $L_1\\cdot L_2$ הייתה ח״ה, אז $(L_1\\cdot L_2)\\cap a^*b^*c^*=L_1$ הייתה ח״ה (חיתוך ח״ה עם רגולרית) — סתירה. $II$: למת הניפוח לשפות ח״ה עם $z=a^nb^nc^n\\in L_2\\cdot L_1$: אם $vx$ לא מכיל $a$ בוחרים $i=2$, ואם $vx$ לא מכיל $c$ בוחרים $i=0$ — סתירה בשני המקרים."
+  },
+  {
+   "num": 13,
+   "topic": "nerode",
+   "question": "תהי $L$ שפת המילים המתוארת ע״י הביטוי הרגולרי $1\\Sigma^*+\\Sigma^*0+\\varepsilon$, מעל הא״ב $\\Sigma=\\{0,1\\}$. יהיו $x,y\\in\\Sigma^*$ מילים כלשהן שונות זו מזו.\nאיזו מהטענות הבאות היא טענה נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם $y\\in L$ וגם $x\\notin L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אם $y\\in L$ וגם $x\\in L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "אם $y\\notin L$ וגם $x\\notin L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "א׳: $y=1\\in L$, $x=01\\notin L$ — הסיפא $z=\\varepsilon$ מפרידה. ב׳: $y=1\\in L$, $x=0\\in L$ — הסיפא $z=1$ מפרידה. ג׳: כל מילה שלא בשפה היא מהצורה $0\\Sigma^*1$; אחרי שרשור סיפא שמסתיימת ב-1 התוצאה לא בשפה, ואחרי סיפא שמסתיימת ב-0 התוצאה בשפה — עבור שתיהן באותו אופן."
+  },
+  {
+   "num": 14,
+   "topic": "nerode",
+   "question": "איזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "קיימת שפה $L$ **לא-רגולרית** מעל הא״ב הבינארי שעבורה $\\mathrm{Rank}(L)<\\mathrm{Rank}(\\overline{L})$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "קיימת שפה $L$ **לא-רגולרית** מעל הא״ב הבינארי שעבורה $\\mathrm{Rank}(L)>\\mathrm{Rank}(\\overline{L})$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "קיימת שפה $L$ **לא-רגולרית** מעל הא״ב הבינארי שעבורה $\\mathrm{Rank}(L)=\\mathrm{Rank}(\\overline{L})$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "לכל $L$, $S_i$ היא מחלקת שקילות של $\\equiv_L$ אם״ם היא מחלקת שקילות של $\\equiv_{\\overline{L}}$ — לשפה ולמשלימתה אותן מחלקות שקילות. לפי משפט נרוד, לכל שפה לא-רגולרית $\\mathrm{Rank}(L)=\\infty=\\mathrm{Rank}(\\overline{L})$."
+  },
+  {
+   "num": 15,
+   "topic": "classify",
+   "question": "תהי $L$ שפה סופית, מעל הא״ב $\\Sigma=\\{a,b\\}$.\nאיזו מהטענות הבאות היא טענה נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "קיים אוטומט מחסנית $M$ כך שמתקיים $\\overline{L}=L(M)$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $\\overline{L}$ היא אינסופית, ולכן לא קיים דקדוק ליניארי ימני $G_R$ כך שמתקיים $\\overline{L}=L(G_R)$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "לא קיים דקדוק $G'$ מהצורה הנורמלית של חומסקי כך שמתקיים $\\overline{L}=L(G')$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "שפה סופית היא רגולרית, והמשלימה של שפה רגולרית רגולרית. לכן יש דקדוק ליניארי ימני שיוצר את $\\overline{L}$; כל שפה רגולרית היא גם ח״ה — ולכן יש אוטומט מחסנית שמזהה את $\\overline{L}$ ויש דקדוק בצורה הנורמלית של חומסקי שיוצר את $\\overline{L}$."
+  },
+  {
+   "num": 16,
+   "topic": "regex",
+   "question": "איזה ביטוי רגולרי מתאר את השפה של האסל״ד $A$ הבא, מעל הא״ב $\\Sigma=\\{a\\}$?",
+   "options": [
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $\\Sigma^*$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $(\\Sigma\\Sigma)^*$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $a(\\Sigma\\Sigma)^*$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $a\\Sigma^*$",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "לאחר סילוק מעברי ה-$\\varepsilon$ מתקבל אסל״ד שקול: $q_1\\xrightarrow{a}q_3$, לולאת $a$ על $q_3$ (המקבל), ו-$q_3\\rightleftarrows q_2$ ב-$a$. כלומר מתקבלות בדיוק המילים באורך $\\ge1$: $a\\Sigma^*$.",
+   "image": "images/exams/26A-A-Q16.png"
+  },
+  {
+   "num": 17,
+   "topic": "classify",
+   "question": "תהי $L=\\{a^{k^2-2025}\\mid k\\ge2026\\}$, שפה מעל הא״ב $\\Sigma=\\{a\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ היא סופית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא רגולרית ואינסופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא חסרת הקשר, וגם לא-רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "נניח בשלילה ש-$L$ ח״ה. שרשור עם השפה הסופית $\\{a^{2025}\\}$ שומר על היותה ח״ה, ומתקבלת $\\{a^{k^2}\\mid k\\ge2026\\}$. איחוד עם השפה הסופית $\\{a^{k^2}\\mid 0\\le k<2026\\}$ שומר גם הוא על היותה ח״ה, ומתקבלת $\\{a^{n^2}\\mid n\\ge0\\}$ — שפה מוכרת שאינה ח״ה (דף הנוסחאות). סתירה. השפה אינסופית, ולכן גם א׳ ו-ב׳ לא נכונות."
+  },
+  {
+   "num": 18,
+   "topic": "nerode",
+   "question": "תהי $L\\subseteq\\{a\\}^*$ שפה סופית לא-ריקה, מעל הא״ב $\\Sigma=\\{a\\}$. תהי $a^d\\in L$ המילה הארוכה ביותר בשפה $L$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "מתקיים $\\mathrm{Rank}(L)=d$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "מתקיים $\\mathrm{Rank}(L)=d+1$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "מתקיים $\\mathrm{Rank}(L)=d+2$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "יש אס״ד עם $d+2$ מצבים: ״מסלול״ של $d+1$ מצבים לקריאת האותיות של המילה הארוכה ביותר, ועוד מצב מלכודת לדחיית מילים באורך $\\ge d+1$. $T=\\{\\varepsilon,a,\\dots,a^d,a^{d+1}\\}$ היא קבוצה מפרידה בגודל $d+2$: לכל $i<k$ הסיפא $a^{d-i}$ מפרידה בין $a^i$ ל-$a^k$. (גם במקרה הקצה $L=\\{\\varepsilon\\}$, $d=0$, יש אס״ד מינימלי עם 2 מצבים.)"
+  }
+ ]
+}

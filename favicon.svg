@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Automata practice">
+  <rect width="32" height="32" rx="7.5" fill="#0d0f14"/>
+  <g fill="none" stroke="#2dd4bf" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="17" r="4.2"/>
+    <circle cx="23" cy="17" r="4.2"/><circle cx="23" cy="17" r="2.4"/>
+    <path d="M13.3 17h5.2M16.8 15.2l1.8 1.8-1.8 1.8"/>
+    <path d="M6.6 13.4c-.9-3.4 5.7-3.4 4.8 0"/>
+    <path d="M2 17h2.6"/>
+  </g>
+</svg>

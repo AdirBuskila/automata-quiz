@@ -1,0 +1,147 @@
+{
+ "examCode": "MQ3",
+ "examLabel": "בוחן מודל 3",
+ "year": 2026,
+ "examDate": "20.1.2026",
+ "course": "62208",
+ "source": "moodle",
+ "files": {
+  "exam": [
+   "מבדקים במודל/בוחן 3/בוחן 3/שאלה 1.jpeg",
+   "מבדקים במודל/בוחן 3/בוחן 3/שאלה 2.jpeg",
+   "מבדקים במודל/בוחן 3/בוחן 3/שאלה 3.jpeg",
+   "מבדקים במודל/בוחן 3/בוחן 3/שאלה 4.jpeg"
+  ],
+  "solution": [
+   "מבדקים במודל/בוחן 3/בוחן 3/ציון 100.jpeg"
+  ],
+  "crossChecks": []
+ },
+ "contexts": {},
+ "questions": [
+  {
+   "num": 1,
+   "topic": "nerode",
+   "question": "תהי $L$ השפה הנוצרת על ידי הביטוי הרגולרי $\\Sigma^*(01+10)\\Sigma^*$, מעל הא״ב הבינארי.\nכמה מצבים יש באס״ד $A$ עם מספר מצבים מינימלי כך שמתקיים $L(A)=L$?",
+   "options": [
+    {
+     "type": "math",
+     "value": "4",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "לפחות 5",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "3",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "2",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "moodle-100",
+   "official": false,
+   "confidence": "high",
+   "explanation": "מילה מכילה $01$ או $10$ אם״ם מופיעות בה שתי האותיות, ולכן $L$ היא שפת המילים שמכילות גם $0$ וגם $1$. יש אס״ד עם 4 מצבים: מצב התחלתי, ״ראינו רק $0$-ים״, ״ראינו רק $1$-ים״ ומצב מקבל בולע. $T=\\{\\varepsilon,0,1,01\\}$ היא קבוצה מפרידה (למשל הסיפא $1$ מפרידה בין $\\varepsilon$ ל-$0$, ו-$\\varepsilon$ מפרידה בין $01$ לכל האחרות) — לכן אי אפשר פחות מ-4."
+  },
+  {
+   "num": 2,
+   "topic": "classify",
+   "question": "נתון האוטומט-מחסנית $M$ הבא, מעל הא״ב $\\Sigma=\\{a,b\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L(M)$ היא חסרת הקשר אבל לא-רגולרית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(M)$ היא סופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(M)$ היא רגולרית ואינסופית.",
+     "id": "c"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "moodle-100",
+   "official": false,
+   "confidence": "high",
+   "explanation": "ב-$q_1$ נדחף $a$ לכל $a$ שנקרא, המעבר ל-$q_2$ קורא $a$ אחד נוסף או אף אות, וב-$q_2$ כל $b$ מוציא $a$ מהמחסנית. לכן $L(M)\\subseteq a^*b^*$, לכל $n$ מתקיים $a^nb^n\\in L(M)$, ומילה $a^ib^j$ עם $j>i$ לא מתקבלת. השפה ח״ה (יש לה אוטומט מחסנית) ואינסופית, ולא-רגולרית: $\\{a^i\\mid i\\ge0\\}$ היא קבוצה מפרידה אינסופית — עבור $i<j$ הסיפא $b^j$ מפרידה בין $a^i$ ל-$a^j$.",
+   "image": "images/exams/MQ3-Q2.png"
+  },
+  {
+   "num": 3,
+   "topic": "nerode",
+   "question": "תהי $L$ שפת המילים מהצורה $(\\Sigma\\Sigma\\Sigma)^*+(\\Sigma\\Sigma\\Sigma\\Sigma)^*$ מעל הא״ב הבינארי.\nיהיו $x,y$ מילים כלשהן שונות זו מזו, מעל הא״ב הבינארי.\nאיזו מהטענות הבאות היא טענה נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם $y\\in L$ וגם $x\\in L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "אם $y\\in L$ וגם $x\\notin L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "אם $y\\notin L$ וגם $x\\notin L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "moodle-100",
+   "official": false,
+   "confidence": "high",
+   "explanation": "$L$ היא שפת המילים שאורכן מתחלק ב-3 או ב-4. א׳: $x=\\varepsilon,\\ y=000\\in L$, והסיפא $z=0$ מפרידה ($0\\notin L$ אבל $0000\\in L$). ג׳: הסיפא $z=\\varepsilon$ מפרידה תמיד בין מילה בשפה למילה שלא בשפה. ד׳: $x=0,\\ y=00\\notin L$, והסיפא $z=0$ מפרידה ($00\\notin L$ אבל $000\\in L$)."
+  },
+  {
+   "num": 4,
+   "topic": "nerode",
+   "question": "תהי $L$ שפה מעל הא״ב הבינארי. ותהי $L^R$ השפה ההפכית לה.\nכלומר, $w=\\sigma_1\\sigma_2\\dots\\sigma_n\\in L$ אם ורק אם $w^R=\\sigma_n\\sigma_{n-1}\\dots\\sigma_1\\in L^R$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם $L$ שפה לא-רגולרית אז מתקיים $\\mathrm{Rank}(L)=\\mathrm{Rank}(L^R)$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אם $L$ שפה רגולרית אז מתקיים $\\mathrm{Rank}(L)=\\mathrm{Rank}(L^R)$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "אם $\\mathrm{Rank}(L)\\ne\\mathrm{Rank}(L^R)$ אז קיימת קבוצה מפרידה אינסופית עבור $L^R$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "moodle-100",
+   "official": false,
+   "confidence": "high",
+   "explanation": "השפות הרגולריות סגורות להיפוך, ולכן אם $L$ לא-רגולרית גם $L^R$ לא-רגולרית (אחרת $L=(L^R)^R$ רגולרית), ולפי משפט נרוד $\\mathrm{Rank}(L)=\\infty=\\mathrm{Rank}(L^R)$ — א׳ נכונה. ב׳ לא נכונה: ל-$L=\\Sigma^*1\\Sigma\\Sigma$ מתקיים $\\mathrm{Rank}(L)=8$, ואילו ל-$L^R=\\Sigma\\Sigma1\\Sigma^*$ יש אס״ד מינימלי עם 5 מצבים. ד׳ לא נכונה: אם הדרגות שונות, לפי א׳ שתי השפות רגולריות, ולכן ל-$L^R$ אין קבוצה מפרידה אינסופית."
+  }
+ ]
+}

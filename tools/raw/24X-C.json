@@ -1,0 +1,601 @@
+{
+ "examCode": "24X-C",
+ "examLabel": "2024 סמסטר א׳ (קצר) מועד ג׳",
+ "year": 2024,
+ "examDate": "14.4.2024",
+ "course": "62208",
+ "source": "exam",
+ "files": {
+  "exam": null,
+  "solution": "מבחנים ופתרונות/2024/סמסטר א/מועד ג - סמסטר קצר/אוטומטים- סמס_ א_ מועד ג_ 14.4.2024 פתרון.pdf",
+  "crossChecks": [
+   "tools/detect_keys.py",
+   "cover-page red answer bubbles (same PDF) — agree on all 18"
+  ]
+ },
+ "contexts": {},
+ "questions": [
+  {
+   "num": 1,
+   "topic": "regex",
+   "question": "יהי $r_1=0^*+1^*$ רגולרי, ויהי $r_2=01^*+10^*+1^*0+0^*1$ ביטוי רגולרי נוסף, מעל הא״ב הבינארי.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L(r_1)$ מוכלת ממש בשפה $L(r_2)$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(r_1)$ שווה לשפה $L(r_2)$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(r_2)$ מוכלת ממש בשפה $L(r_1)$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$\\varepsilon\\in L(r_1)$ אבל $\\varepsilon\\notin L(r_2)$ (כל מילה ב-$L(r_2)$ היא באורך 1 לפחות), ולכן $L(r_1)\\not\\subseteq L(r_2)$ — א׳ ו-ב׳ לא נכונות. $01\\in L(r_2)$ אבל $01\\notin L(r_1)$, ולכן גם ג׳ לא נכונה."
+  },
+  {
+   "num": 2,
+   "topic": "cfg",
+   "question": "נתון הדקדוק הבא, מעל הא״ב הבינארי. המשתנה ההתחלתי בדקדוק זה הוא $S$:\n$$\\begin{array}{l}S\\to B1B1B1B\\\\ B\\to 0B\\mid 1B\\mid\\varepsilon\\end{array}$$\nתהי $L$ השפה הנוצרת ע״י הדקדוק $G$. איזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "המילה $11$ **שייכת** לשפה $L$ והמילה $111$ **שייכת** לשפה $L$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "המילה $11$ **לא-שייכת** לשפה $L$ והמילה $111$ **שייכת** לשפה $L$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "המילה $11$ **לא-שייכת** לשפה $L$ והמילה $111$ **לא-שייכת** לשפה $L$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "המילה $11$ **שייכת** לשפה $L$ והמילה $111$ **לא-שייכת** לשפה $L$",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$B$ גוזר כל מילה בינארית, ולכן $L=\\Sigma^*1\\Sigma^*1\\Sigma^*1\\Sigma^*$ — המילים עם לפחות שלושה $1$-ים. לכן $111\\in L$ (כל $B\\Rightarrow\\varepsilon$) ואילו $11\\notin L$."
+  },
+  {
+   "num": 3,
+   "topic": "nfa",
+   "question": "איזו מילה מתקבלת ע״י האסל״ד $A$ הבא מעל הא״ב הבינארי?",
+   "options": [
+    {
+     "type": "math",
+     "value": "100010",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "010001",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "010110",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "1010",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "האסל״ד מקבל בדיוק את המילים שהאות השלישית מהסוף בהן היא $1$ (מנחשים ב-$q_1$ את ה-$1$ הזה ואז קוראים עוד בדיוק שתי אותיות). ב-$010110$ שלוש האותיות האחרונות הן $110$ — מתקבלת; בשאר המילים האות השלישית מהסוף היא $0$.",
+   "image": "images/exams/24X-C-Q3.png"
+  },
+  {
+   "num": 4,
+   "topic": "pumping_reg",
+   "question": "תהי $L=\\{a^kb^mc^k\\mid m,k\\ge0\\}$ שפה מעל הא״ב $\\{a,b,c\\}$.\nרוצים להוכיח שהשפה $L$ היא לא-רגולרית, תוך שימוש בלמת הניפוח לשפות רגולריות.\nיהי $n\\ge2$ הקבוע המובטח מהלמה.\nאיזו מילה תביא **בהכרח** לסתירה לתנאי למת הניפוח?",
+   "options": [
+    {
+     "type": "math",
+     "value": "ab^nc",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "a^{n+1}b^nc^{n+1}",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "a^{n-1}bc^{n-1}",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל התשובות האחרות לא נכונות",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "ב-$a^{n+1}b^nc^{n+1}$, מכיוון ש-$|xy|\\le n$, $y$ מכיל רק $a$-ים; ניפוח משנה את מספר ה-$a$ בלי לשנות את מספר ה-$c$ — סתירה. ב-א׳ הפירוק $x=a$, $y=b$ וב-ג׳ הפירוק $x=a^{n-1}$, $y=b$ מקיימים את הלמה (ניפוח ה-$b$ שומר על השייכות)."
+  },
+  {
+   "num": 5,
+   "topic": "regex",
+   "question": "תהי $L=\\{w\\mid \\#_0(w)\\equiv 0\\pmod 2\\}$ שפה מעל הא״ב הבינארי.\nכלומר, $L$ היא שפת כל המילים הבינאריות שמכילות מספר **זוגי** של אפסים.\nאיזה ביטוי רגולרי מתאר את השפה $L$?",
+   "options": [
+    {
+     "type": "text",
+     "value": "הביטוי $(1+01^*0)^*$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי $(1^*01^*0)^*$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי $(01^*01^*)^*$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי $(01^*01^*)^*+(1^*01^*0)^*$",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "ב-$(1+01^*0)^*$ כל גוש הוא $1$ בודד או זוג אפסים עם $1$-ים ביניהם — כך נוצרת בדיוק כל מילה עם מספר זוגי של אפסים. המילה $1\\in L$ לא נוצרת בביטויים ב׳, ג׳, ד׳ (בכל מילה לא-ריקה שלהם יש לפחות שני אפסים)."
+  },
+  {
+   "num": 6,
+   "topic": "classify",
+   "question": "תהי $L=\\{a^ib^mc^k\\mid i=m\\ge0\\ \\lor\\ k=m\\ge0\\}$ שפה מעל הא״ב $\\{a,b,c\\}$.\nלדוגמא, $\\varepsilon,\\ abc,\\ a^2b^2c,\\ bc\\in L$ אבל $a^3bc^3\\notin L$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ היא סופית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא רגולרית ואינסופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא חסרת הקשר, וגם היא שפה לא-רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L$ היא איחוד של $\\{a^mb^mc^k\\}$ ו-$\\{a^ib^mc^m\\}$, ושתיהן ח״ה — ולכן $L$ ח״ה. $L$ לא-רגולרית: $T=\\{a,a^2,a^3,\\dots\\}$ היא קבוצה מפרידה אינסופית — לכל $i\\ne j$ הסיפא $b^i$ מפרידה, כי $a^ib^i\\in L$ אבל $a^jb^i\\notin L$."
+  },
+  {
+   "num": 7,
+   "topic": "classify",
+   "question": "תהי $L=\\{a^mb^mc^k\\mid 0\\le k=m\\}$, שפה מעל הא״ב $\\{a,b,c\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ היא סופית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא רגולרית ואינסופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא חסרת הקשר, וגם היא שפה לא-רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L=\\{a^mb^mc^m\\mid m\\ge0\\}$ — השפה הקלאסית שאינה חסרת הקשר (למת הניפוח לשפות ח״ה עם $a^\\ell b^\\ell c^\\ell$: $vx$ לא יכול להכיל את שלוש האותיות)."
+  },
+  {
+   "num": 8,
+   "topic": "cfg",
+   "question": "נתון הדקדוק הבא, מעל הא״ב $\\{a,b\\}$. המשתנה ההתחלתי בדקדוק זה הוא $S$:\n$$\\begin{array}{l}S\\to A\\mid B\\\\ A\\to aA\\mid aT\\\\ B\\to Bb\\mid Tb\\\\ T\\to aTb\\mid\\varepsilon\\end{array}$$\nתהי $L$ השפה הנוצרת ע״י הדקדוק $G$. איזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ היא $\\{a^ib^k\\mid i,k\\ge0\\ \\wedge\\ i\\ne k\\}$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא $\\{a^ib^k\\mid i,k\\ge0\\ \\wedge\\ i=k\\}$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא $\\{a^ib^k\\mid i>k\\ge0\\}$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא $\\{a^ib^k\\mid k>i\\ge0\\}$",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$T$ גוזר $a^jb^j$. $A$ גוזר $a^{+}a^jb^j$ — מילים עם $i>k$, ו-$B$ גוזר $a^jb^jb^{+}$ — מילים עם $k>i$. האיחוד הוא בדיוק $\\{a^ib^k\\mid i\\ne k\\}$; ב׳ שגויה ($\\varepsilon\\notin L$), ג׳ ו-ד׳ מתארות רק חצי מהשפה."
+  },
+  {
+   "num": 9,
+   "topic": "regex",
+   "question": "יהי $r_1=0\\cdot\\Sigma^*\\cdot0+1\\cdot\\Sigma^*\\cdot1$ ביטוי רגולרי, ויהי $r_2=(\\Sigma\\Sigma)^*\\cdot\\Sigma^*$ ביטוי רגולרי נוסף, מעל הא״ב הבינארי.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L(r_1)$ שווה לשפה $L(r_2)$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(r_1)$ מוכלת ממש בשפה $L(r_2)$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(r_2)$ מוכלת ממש בשפה $L(r_1)$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L(r_2)=\\Sigma^*$, ולכן כל שפה מעל $\\Sigma$ מוכלת בה. $L(r_1)\\ne\\Sigma^*$ (למשל $\\varepsilon,\\ 01\\notin L(r_1)$), ולכן ההכלה ממש."
+  },
+  {
+   "num": 10,
+   "topic": "cfl_props",
+   "question": "תהי $L$ שפה מעל הא״ב $\\{a,b\\}$.\n**נגדיר** את השפה $A(L)=\\{w\\mid w\\in L\\ \\wedge\\ w\\in a^*b^*\\}$.\nכלומר, $A(L)$ מכילה את כל המילים ששייכות לשפה $L$ שהן מהצורה $a^*b^*$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם השפה $L$ חסרת הקשר אזי השפה $A(L)$ חסרת הקשר",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אם השפה $L$ חסרת הקשר אזי השפה $A(L)$ רגולרית",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "תשובות א + ב נכונות",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל התשובות האחרות לא נכונות",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$A(L)=L\\cap a^*b^*$, ומחלקת השפות ח״ה סגורה לחיתוך עם שפה רגולרית — לכן א׳ נכונה. ב׳ לא נכונה: עבור $L=\\{a^nb^n\\mid n\\ge0\\}$ מתקבל $A(L)=L$, שאינה רגולרית (ולכן גם ג׳ לא נכונה).",
+   "lockOrder": true
+  },
+  {
+   "num": 11,
+   "topic": "classify",
+   "question": "תהי $L=\\{a^{m+k}b^mc^k\\mid m,k\\ge0\\}$, שפה מעל הא״ב $\\{a,b,c\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ סופית",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ רגולרית ואינסופית",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ חסרת הקשר וגם לא-רגולרית",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L$ נוצרת ע״י הדקדוק $S\\to aSc\\mid T,\\ T\\to aTb\\mid\\varepsilon$ (כלומר $a^ka^mb^mc^k$), ולכן ח״ה. $L$ לא-רגולרית: $L\\cap a^*b^*=\\{a^mb^m\\mid m\\ge0\\}$ שאינה רגולרית."
+  },
+  {
+   "num": 12,
+   "topic": "reg_closure",
+   "question": "יהי $A$ אוטומט, מעל הא״ב הבינארי.\nיהי $B$ האוטומט המתקבל מהאוטומט $A$ ע״י הפיכת כל מצב מקבל של $A$ למצב דוחה, וע״י הפיכת כל מצב דוחה של $A$ למצב מקבל.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם $A$ הוא אוטומט סופי דטרמיניסטי (אס״ד), אזי $L(A)=\\overline{L(B)}$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אם $A$ הוא אוטומט סופי לא-דטרמיניסטי (אסל״ד), אזי $L(A)=\\overline{L(B)}$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "תשובות **א + ב** נכונות",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל התשובות האחרות לא נכונות",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "באס״ד לכל מילה יש מסלול חישוב יחיד, והיא מתקבלת ב-$B$ אם״ם המסלול מסתיים במצב שאינו מקבל ב-$A$ — לכן $L(B)=\\overline{L(A)}$. באסל״ד זה לא עובד: למשל אסל״ד עם מצב יחיד מקבל ובלי מעברים מקבל $\\{\\varepsilon\\}$, והפיכת המצבים נותנת $\\emptyset$ ולא את המשלים (ולכן גם ג׳ לא נכונה).",
+   "lockOrder": true
+  },
+  {
+   "num": 13,
+   "topic": "pda",
+   "question": "נתון האוטומט-מחסנית $M$ הבא, מעל הא״ב $\\{a,b,c\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "המילה $ab$ **שייכת** לשפה של $M$ והמילה $abc$ **שייכת** לשפה של $M$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "המילה $ab$ **לא שייכת** לשפה של $M$ והמילה $abc$ **שייכת** לשפה של $M$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "המילה $ab$ **שייכת** לשפה של $M$ והמילה $abc$ **לא שייכת** לשפה של $M$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "המילה $ab$ **לא שייכת** לשפה של $M$ והמילה $abc$ **לא שייכת** לשפה של $M$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "כל ה-$a$-ים נקראים ב-$q_0$ ודוחפים $A$; כל $b$ ב-$q_1$ וכל $c$ ב-$q_2$ שולפים $A$. בקורס מילה מתקבלת במצב מקבל **ועם מחסנית ריקה**; כל המצבים מקבלים, ולכן השפה היא $\\{a^nb^ic^j\\mid i+j=n\\}$. $ab$ מתקבלת (דחיפה ושליפה אחת); ב-$abc$ אחרי $ab$ המחסנית ריקה ואי-אפשר לקרוא את ה-$c$ — לא מתקבלת.",
+   "image": "images/exams/24X-C-Q13.png"
+  },
+  {
+   "num": 14,
+   "topic": "nerode",
+   "question": "תהי $L$ שפת המילים מהצורה $(\\Sigma\\Sigma\\Sigma)^*+(\\Sigma\\Sigma\\Sigma\\Sigma)^*$, מעל הא״ב הבינארי.\nיהיו $x,y$ מילים כלשהן שונות זו מזו, מעל הא״ב הבינארי.\nאיזו מהטענות הבאות היא טענה נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם $y\\in L$ וגם $x\\notin L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אם $y\\in L$ וגם $x\\in L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "אם $y\\notin L$ וגם $x\\notin L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L$ = המילים שאורכן מתחלק ב-3 או ב-4. א׳: הסיפא $z=\\varepsilon$ מפרידה. ב׳: $x=\\varepsilon$, $y=000$ והסיפא $z=0000$ מפרידה (אורכים 4 ו-7). ג׳: $x=0$, $y=00$ והסיפא $z=0$ מפרידה (אורכים 2 ו-3)."
+  },
+  {
+   "num": 15,
+   "topic": "nerode",
+   "question": "תהי $L$ השפה הנוצרת ע״י הביטוי הרגולרי $\\Sigma^*\\cdot1\\cdot1$, מעל הא״ב הבינארי.\nכמה מצבים יש באס״ד $A$ עם מספר המצבים המינימלי כך שמתקיים $L(A)=L$?",
+   "options": [
+    {
+     "type": "math",
+     "value": "2",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "3",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "4",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "לפחות 5",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L$ = המילים שמסתיימות ב-$11$. יש אס״ד עם 3 מצבים שזוכר כמה $1$-ים רצופים יש בסוף (0, 1, לפחות 2). $T=\\{\\varepsilon,1,11\\}$ היא קבוצה מפרידה בגודל 3 (הסיפא $1$ מפרידה בין $\\varepsilon$ ל-$1$, והסיפא $\\varepsilon$ מפרידה בין $11$ לשאר), ולכן $\\mathrm{Rank}(L)=3$."
+  },
+  {
+   "num": 16,
+   "topic": "nfa",
+   "question": "נתבונן באסל״ד $A$, ובאסל״ד $B$ המכילים מעברי אפסילון, מעל הא״ב $\\{a\\}$:\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L(A)$ מוכלת ממש בשפה $L(B)$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(A)$ שווה לשפה $L(B)$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L(B)$ מוכלת ממש בשפה $L(A)$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L(A)=\\{\\varepsilon\\}\\cup\\{a^{2k+1}\\mid k\\ge0\\}$: המצב ההתחלתי מקבל את $\\varepsilon$, ואחרי מעבר ה-$\\varepsilon$ מגיעים למצב המקבל רק אחרי מספר אי-זוגי של $a$. $L(B)=a^*$: אחרי ה-$a$ הראשון מעבר ה-$\\varepsilon$ ולולאת ה-$a$ מאפשרים לקבל כל אורך. לכן $L(A)\\subsetneq L(B)$ (למשל $aa\\in L(B)\\setminus L(A)$).",
+   "image": "images/exams/24X-C-Q16.png"
+  },
+  {
+   "num": 17,
+   "topic": "nerode",
+   "question": "איזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "לכל שפה $L$ **רגולרית** מעל הא״ב הבינארי מתקיים $\\mathrm{Rank}(L)<\\mathrm{Rank}(\\overline{L})$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "לכל שפה $L$ **רגולרית** מעל הא״ב הבינארי מתקיים $\\mathrm{Rank}(L)>\\mathrm{Rank}(\\overline{L})$",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "לכל שפה $L$ **רגולרית** מעל הא״ב הבינארי מתקיים $\\mathrm{Rank}(L)=\\mathrm{Rank}(\\overline{L})$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "שתי מילים ניתנות להפרדה ביחס ל-$L$ אם״ם הן ניתנות להפרדה ביחס ל-$\\overline{L}$ (אותה סיפא מפרידה), ולכן לשפה ולמשלימתה אותן מחלקות שקילות ו-$\\mathrm{Rank}(L)=\\mathrm{Rank}(\\overline{L})$. (באס״ד המינימלי: החלפת מצבים מקבלים ודוחים נותנת אס״ד מינימלי למשלים עם אותו מספר מצבים.)"
+  },
+  {
+   "num": 18,
+   "topic": "pda",
+   "question": "נתון האוטומט-מחסנית $M$ הבא, מעל הא״ב $\\{a,b\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ היא סופית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא רגולרית ואינסופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא חסרת הקשר, וגם היא שפה לא-רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "בקורס מילה מתקבלת במצב מקבל **ועם מחסנית ריקה**. כל מילה מתקבלת: עוברים מיד ב-$\\varepsilon$ למצב השני בלי לדחוף דבר, קוראים בו את כל המילה (לולאות $a$ ו-$b$ בלי שינוי המחסנית), וממשיכים ב-$\\varepsilon$ עד המצב המקבל — עם מחסנית ריקה. לכן $L=\\Sigma^*$ — רגולרית ואינסופית.",
+   "image": "images/exams/24X-C-Q18.png"
+  }
+ ]
+}

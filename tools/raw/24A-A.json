@@ -1,0 +1,599 @@
+{
+ "examCode": "24A-A",
+ "examLabel": "2024 סמסטר א׳ מועד א׳",
+ "year": 2024,
+ "examDate": "20.3.2024",
+ "course": "62208",
+ "source": "exam",
+ "files": {
+  "exam": "מבחנים ופתרונות/2024/סמסטר א/מועד א/אוטומטים- סמס_ א_ מועד א_ 20.3.2024 מבחן.pdf",
+  "solution": "מבחנים ופתרונות/2024/סמסטר א/מועד א/אוטומטים- סמס_ א_ מועד א_ 20.3.2024 פתרון.pdf",
+  "crossChecks": [
+   "tools/detect_keys.py"
+  ]
+ },
+ "contexts": {},
+ "questions": [
+  {
+   "num": 1,
+   "topic": "regex",
+   "question": "איזה מבין הביטויים הרגולריים שקול לביטוי הרגולרי הבא, מעל הא״ב $\\Sigma=\\{a,b\\}$?\n$$\\left((a+b)(a^*+b^*)\\right)+\\varepsilon$$",
+   "options": [
+    {
+     "type": "math",
+     "value": "(ab^*)+(ba^*)",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "(a^*)+(b^*)+(ab^*)+(ba^*)",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "\\left((a+b)(a+b)(a^*+b^*)\\right)+\\varepsilon",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "(a+b^*)(a^*+b)",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "הביטוי הנתון מתאר את המילה הריקה ואת כל המילים שהן רצף של אות אחת חוזרת, למעט האות הראשונה שיכולה להיות שונה — וזה בדיוק $a^*+b^*+ab^*+ba^*$. א׳ לא מכיל את $\\varepsilon$; ג׳ לא מכיל את $a$; ד׳ מכיל את $bbbaaa$ שלא שייכת לשפת הביטוי."
+  },
+  {
+   "num": 2,
+   "topic": "classify",
+   "question": "תהיינה השפות הבאות, מעל הא״ב $\\{a,b\\}$:\n$$\\begin{array}{l}L_1=\\{a^nb^m\\mid n+3m\\le 2024\\ \\mathrm{and}\\ n,m\\ge0\\}\\\\ L_2=\\{a^nb^m\\mid n-3m\\le 2024\\ \\mathrm{and}\\ n,m\\ge0\\}\\end{array}$$\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L_1$ רגולרית וגם השפה $L_2$ רגולרית",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L_1$ רגולרית וגם השפה $L_2$ לא-רגולרית",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L_1$ לא-רגולרית וגם השפה $L_2$ רגולרית",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L_1$ לא-רגולרית וגם השפה $L_2$ לא-רגולרית",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L_1\\subseteq\\{a^k\\mid k\\le2024\\}\\cdot\\{b^d\\mid d\\le2024\\}$ ולכן סופית, ובפרט רגולרית. $L_2$ לא-רגולרית: עבור $w=a^{3\\ell+2024}b^{\\ell}$ כל פירוק לפי למת הניפוח נותן $y=a^k$, ולכל $i>1$ המילה $xy^iz$ כבר לא מקיימת $n-3m\\le2024$."
+  },
+  {
+   "num": 3,
+   "topic": "reg_closure",
+   "question": "בשאלה זו נעסוק במחלקה שמכילה את כל השפות הלא-רגולריות.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "מחלקת השפות הלא-רגולריות סגורה תחת פעולת משלים",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "מחלקת השפות הלא-רגולריות סגורה תחת פעולת חיתוך",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "מחלקת השפות הלא-רגולריות סגורה תחת פעולת איחוד",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "אילו $L$ לא-רגולרית ו-$\\overline{L}$ רגולרית, אז $\\overline{\\overline{L}}=L$ רגולרית (סגירות הרגולריות למשלים) — סתירה. חיתוך שפת הפלינדרומים עם משלימתה נותן $\\emptyset$, ואיחודן נותן $\\Sigma^*$ — שתיהן רגולריות, ולכן ב׳ ו-ג׳ לא נכונות."
+  },
+  {
+   "num": 4,
+   "topic": "regex",
+   "question": "איזה ביטוי רגולרי מתאר את השפה של האס״ד $A$ הבא מעל הא״ב $\\Sigma=\\{a,b\\}$?",
+   "options": [
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $a^*ba^*b(a+b)$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $(a+b)^*ba^*ba^*$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $(a+b)^*b(a+b)^*(b(a+b)^*)^*$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "האס״ד מקבל בדיוק את המילים שמכילות לפחות שני מופעים של $b$, וזו השפה של $(a+b)^*ba^*ba^*$ (שני ה-$b$ האחרונים במילה). א׳: המילה $bbbb$ מתקבלת ע״י האס״ד אך לא שייכת לשפת הביטוי. ג׳: המילה $b$ שייכת לשפת הביטוי אך לא מתקבלת.",
+   "image": "images/exams/24A-A-Q4.png"
+  },
+  {
+   "num": 5,
+   "topic": "pumping_reg",
+   "question": "תהי $L=\\{a^ib^mc^k\\mid \\max\\{i,k\\}\\ge m\\ge\\min\\{i,k\\}\\ge0\\}$, שפה מעל הא״ב $\\{a,b,c\\}$.\nרוצים להוכיח שהשפה $L$ היא לא-רגולרית, תוך שימוש בלמת הניפוח לשפות רגולריות. נגדיר את $n$ להיות הקבוע המובטח מהלמה.\nאיזו מילה תביא **בהכרח** לסתירה לתנאי למת הניפוח?",
+   "options": [
+    {
+     "type": "math",
+     "value": "a^nb^{n-1}c^n",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "a^{n-1}b^nc^n",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "a^{10}b^{10}c^9",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "a^nb^nc^{n-1}",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$a^nb^nc^{n-1}\\in L$ ובאורך הנדרש. בכל פירוק עם $|xy|\\le n$ מתקיים $y=a^k$, ועבור $i=0$ מתקבלת מילה שבה $\\max\\{i,k\\}<m$ — סתירה. א׳ לא שייכת לשפה ($\\min=n>n-1$); ב׳: הפירוק $y=a$ מקיים את הלמה לכל $i\\ge0$; ג׳: אורכה 29, ועבור $n>29$ היא קצרה מדי."
+  },
+  {
+   "num": 6,
+   "topic": "cfl_props",
+   "question": "בהינתן שלוש שפות $L_1,L_2,L_3$ כלשהן, מעל הא״ב הבינארי $\\Sigma$, נגדיר את השפה:\n$$\\begin{array}{l}M(L_1,L_2,L_3)=\\{w\\in\\Sigma^*\\mid w\\in L_1\\cap L_2\\ \\mathrm{or}\\\\ w\\in L_1\\cap L_3\\ \\mathrm{or}\\ w\\in L_2\\cap L_3\\}\\end{array}$$\nנתבונן בשתי הטענות הבאות:\n$I$. אם השפות $L_1,L_2,L_3$ הן רגולריות אזי השפה $M(L_1,L_2,L_3)$ רגולרית.\n$II$. אם השפות $L_1,L_2,L_3$ הן חסרות הקשר אזי השפה $M(L_1,L_2,L_3)$ חסרת הקשר.\nאיזה מהסעיפים הבאים נכון?",
+   "options": [
+    {
+     "type": "text",
+     "value": "שתי הטענות $I,\\,II$ הן נכונות.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "שתי הטענות $I,\\,II$ הן לא נכונות.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "טענה $I$ נכונה וגם טענה $II$ לא נכונה.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "טענה $II$ נכונה וגם טענה $I$ לא נכונה.",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$I$: $M(L_1,L_2,L_3)=(L_1\\cap L_2)\\cup(L_1\\cap L_3)\\cup(L_2\\cap L_3)$, והרגולריות סגורות לחיתוך ולאיחוד. $II$: עבור $L_1=\\{a^ib^kc^k\\}$, $L_2=\\{a^kb^ic^k\\}$, $L_3=\\{a^kb^kc^i\\}$ (כולן ח״ה) מתקבל $M=\\{a^kb^kc^k\\mid k\\ge0\\}$, שאינה ח״ה."
+  },
+  {
+   "num": 7,
+   "topic": "cfg",
+   "question": "נתון הדקדוק הבא, מעל הא״ב $\\{a,b,c\\}$. המשתנה ההתחלתי בדקדוק זה הוא $S$:\n$$\\begin{array}{l}S\\to aSc\\mid B\\\\ B\\to bBc\\mid\\varepsilon\\end{array}$$\nמהי השפה הנוצרת ע״י הדקדוק?",
+   "options": [
+    {
+     "type": "math",
+     "value": "\\{a^nb^mc^k\\mid m,n,k\\ge0\\}",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "\\{(ab)^kc^{2k}\\mid k\\ge0\\}",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "\\{a^nb^mc^k\\mid k=m+n\\ \\mathrm{and}\\ m,n,k\\ge0\\}",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "\\{a^kb^kc^k\\mid k\\ge0\\}",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$S$ גוזר כמות שווה של $a$ משמאל ושל $c$ מימין, ואז $B$ גוזר כמות שווה של $b$ משמאל ושל $c$ מימין — לכן מספר ה-$c$ שווה למספר ה-$a$ ועוד מספר ה-$b$. א׳: $c$ לא נגזרת. ב׳: $ababcccc$ לא נגזרת. ד׳: $abc$ לא נגזרת (ובנוסף השפה בד׳ אינה ח״ה)."
+  },
+  {
+   "num": 8,
+   "topic": "classify",
+   "question": "תהי $L=\\{a^nb^mc^k\\mid 0\\le n\\le 2024\\le m\\le k\\}$, שפה מעל הא״ב $\\{a,b,c\\}$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ סופית",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ רגולרית ואינסופית",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ חסרת הקשר וגם לא-רגולרית",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר",
+     "id": "d"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L=L_1\\cdot L_2$ עם $L_1=\\{\\varepsilon,a,\\dots,a^{2024}\\}$ (סופית) ו-$L_2=\\{b^mc^k\\mid 2024\\le m\\le k\\}$ (ח״ה), והח״ה סגורות לשרשור. $L$ לא-רגולרית: $T=\\{b^{2024},b^{2025},\\dots\\}$ קבוצה מפרידה אינסופית — הסיפא $c^{\\ell}$ מפרידה בין $b^{\\ell}$ ל-$b^h$ לכל $\\ell<h$."
+  },
+  {
+   "num": 9,
+   "topic": "nerode",
+   "question": "תהי $L$ השפה הנוצרת ע״י הביטוי הרגולרי $\\Sigma^*\\cdot111$, מעל הא״ב הבינארי.\nיהיו $x,y$ מילים כלשהן שונות זו מזו, מעל הא״ב הבינארי.\nאיזו מהטענות הבאות היא טענה נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם $y\\in L$ וגם $x\\notin L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אם $y\\in L$ וגם $x\\in L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "אם $y\\notin L$ וגם $x\\notin L$ אז $x,y$ **לא**-ניתנות להפרדה ביחס לשפה $L$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "ב׳: אם $x,y\\in L$ שתיהן מסתיימות ב-$111$; לכן לכל סיפא $z$, אם $z$ מהצורה $\\Sigma^*111+1^*$ אז $xz,yz\\in L$ ואחרת $xz,yz\\notin L$ — אין סיפא מפרידה. א׳: $x=1$, $y=111$ — הסיפא $\\varepsilon$ מפרידה. ג׳: $x=1$, $y=11$ — הסיפא $1$ מפרידה."
+  },
+  {
+   "num": 10,
+   "topic": "reg_closure",
+   "question": "תהיינה $L_1,L_2$ שפות רגולריות. מה ניתן לומר בהכרח על השפה $L=\\overline{L_1}\\cup L_2$?",
+   "options": [
+    {
+     "type": "text",
+     "value": "מתקיים $\\mathrm{Rank}(L)\\ge\\mathrm{Rank}(L_1)$",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ מקיימת את למת הניפוח לשפות רגולריות",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "אם $L_2$ היא שפה אינסופית אז $\\mathrm{Rank}(L)=\\infty$",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "הרגולריות סגורות למשלים ולאיחוד, ולכן $L$ רגולרית — ובפרט מקיימת את למת הניפוח, ו-$\\mathrm{Rank}(L)$ סופי (ג׳ לא נכונה). א׳: עבור $L_1=L_2=(\\Sigma\\Sigma)^*$ מתקבל $L=\\Sigma^*$, ו-$\\mathrm{Rank}(L)=1<2=\\mathrm{Rank}(L_1)$."
+  },
+  {
+   "num": 11,
+   "topic": "dfa",
+   "question": "איזו מילה מתקבלת ע״י האס״ד $A$ הבא, מעל הא״ב הבינארי?",
+   "options": [
+    {
+     "type": "math",
+     "value": "0101",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "010",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "10",
+     "id": "c"
+    },
+    {
+     "type": "math",
+     "value": "\\varepsilon",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "שפת האס״ד היא $0^*1\\left(1+0(0+1)\\right)^*$. הריצה על $0101$ מסתיימת במצב המקבל; הריצות על $010$ ועל $10$ מסתיימות במצב הימני (לא מקבל), ו-$\\varepsilon$ נשארת במצב ההתחלתי שאינו מקבל.",
+   "image": "images/exams/24A-A-Q11.png"
+  },
+  {
+   "num": 12,
+   "topic": "classify",
+   "question": "נתון הדקדוק $G$ הבא, מעל הא״ב $\\{a,b\\}$. המשתנה ההתחלתי בדקדוק זה הוא $S$:\n$$\\begin{array}{l}S\\to aS\\mid bA\\\\ A\\to aA\\mid bB\\\\ B\\to aA\\mid\\varepsilon\\end{array}$$\nתהי $L$ השפה הנוצרת ע״י הדקדוק $G$. איזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ סופית",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ רגולרית ואינסופית",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ חסרת הקשר וגם לא-רגולרית",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "השפה אינסופית כי ניתן לגזור ממנה את כל המילים $ba^*b$. הדקדוק שקול לדקדוק הליניארי הימני $S\\to aS\\mid bA$, $A\\to aA\\mid bB\\mid b$, $B\\to aA$, ולכן השפה רגולרית."
+  },
+  {
+   "num": 13,
+   "topic": "nerode",
+   "question": "איזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "קיימת שפה חסרת הקשר $L$ כך שמתקיים $\\mathrm{Rank}(L)$ הוא סופי.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "תהי $L$ שפה רגולרית ויהי $A$ אס״ד עם מספר המצבים המינימלי כך שמתקיים $L(A)=L$. אזי לא יתכן שלאס״ד $A$ יהיו שלושה מצבים מקבלים.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "תהי $L$ שפה כלשהי ויהי $M$ אוטומט-מחסנית כך שמתקיים $L(M)=L$. אזי $L$ היא בהכרח שפה אינסופית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל התשובות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "כל שפה רגולרית היא ח״ה, ולפי משפט נרוד $\\mathrm{Rank}$ שלה סופי — ולכן א׳ נכונה. ב׳: ל-$L=\\{w\\mid |w|\\le2\\}$ יש אס״ד מינימלי עם בדיוק שלושה מצבים מקבלים ($\\{\\varepsilon,1,11\\}$ קבוצה מפרידה של מילים בשפה, ועוד מצב מלכודת).ג׳: שפה סופית היא רגולרית ולכן ח״ה, ויש אוטומט מחסנית שמזהה אותה."
+  },
+  {
+   "num": 14,
+   "topic": "nerode",
+   "question": "תהי $L$ השפה הנוצרת ע״י הביטוי הרגולרי $(\\Sigma\\cdot\\Sigma)^*\\cdot1\\cdot\\Sigma^*$, מעל הא״ב הבינארי.\nכמה מצבים יש באס״ד $A$ עם מספר המצבים המינימלי כך שמתקיים $L(A)=L$?",
+   "options": [
+    {
+     "type": "math",
+     "value": "2",
+     "id": "a"
+    },
+    {
+     "type": "math",
+     "value": "3",
+     "id": "b"
+    },
+    {
+     "type": "math",
+     "value": "4",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "לפחות 5",
+     "id": "d"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "$L$ היא שפת המילים שיש בהן $1$ במקום אי-זוגי. יש לה אס״ד עם 3 מצבים (שני מצבים שסופרים זוגיות עד שנקרא $1$ במקום אי-זוגי, ועוד מצב מקבל בולע), ו-$T=\\{\\varepsilon,0,1\\}$ היא קבוצה מפרידה בגודל 3."
+  },
+  {
+   "num": 15,
+   "topic": "reg_closure",
+   "question": "תהי $L$ שפה מעל הא״ב $\\{a,b,c\\}$.\nלכל $z\\in L$, תהי $del_a(z)$ המילה המתקבלת מ-$z$ על ידי מחיקת כל מופעי האות $a$ ב-$z$.\nנגדיר $D_a(L)=\\{w\\mid \\exists z\\in L,\\ del_a(z)=w\\}$.\nלדוגמא, אם $bacab\\in L$, אזי $del_a(bacab)=bcb$. לכן, $bcb\\in D_a(L)$.\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "אם השפה $L$ רגולרית אזי השפה $D_a(L)$ רגולרית",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "אם השפה $D_a(L)$ רגולרית אזי השפה $L$ רגולרית",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "תשובות א + ב נכונות",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל התשובות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "אם $L$ רגולרית יש ביטוי רגולרי שמתאר אותה; החלפת כל מופע של $a$ בביטוי ב-$\\varepsilon$ נותנת ביטוי רגולרי ל-$D_a(L)$. ב׳ (ולכן גם ג׳) מופרכת ע״י $L=\\{a^nb^n\\mid n\\ge0\\}$ הלא-רגולרית, שעבורה $D_a(L)=b^*$ רגולרית.",
+   "lockOrder": true
+  },
+  {
+   "num": 16,
+   "topic": "regex",
+   "question": "איזה ביטוי רגולרי מתאר את השפה של האסל״ד $A$ הבא:",
+   "options": [
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $a^*ba^*$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $a^*b+baa^*$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "הביטוי הרגולרי $aba+ab^*(aa)^*a$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "כל הטענות האחרות לא נכונות.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "לאחר סילוק מעבר ה-$\\varepsilon$ מתקבל אסל״ד שקול: לולאת $a$ על המצב ההתחלתי, מעבר $b$ לאחד משני מצבים מקבלים, ומהם רק קריאת $a$-ים — כלומר $a^*ba^*$. המילה $abaa$ מתקבלת ע״י האסל״ד אך לא ע״י הביטויים בב׳ ובג׳.",
+   "image": "images/exams/24A-A-Q16.png"
+  },
+  {
+   "num": 17,
+   "topic": "classify",
+   "question": "תהי $L=\\{a^nb^{2n}a^n\\mid n\\ge0\\}$. איזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "השפה $L$ היא סופית.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא רגולרית ואינסופית.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא חסרת הקשר, וגם היא שפה לא-רגולרית.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "השפה $L$ היא לא-חסרת הקשר.",
+     "id": "d"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "נניח בשלילה ש-$L$ ח״ה, ויהי $\\ell$ קבוע הניפוח. עבור $w=a^{\\ell}b^{2\\ell}a^{\\ell}$ ופירוק $w=xyzuv$ עם $|yzu|\\le\\ell$, $yzu$ מוכל ב-$a^{\\ell}b^{2\\ell}$ או ב-$b^{2\\ell}a^{\\ell}$, ולכן לכל $i>1$ היחס בין שלושת הגושים נשבר ו-$xy^izu^iv\\notin L$ — סתירה."
+  },
+  {
+   "num": 18,
+   "topic": "pda",
+   "question": "נתון האוטומט-מחסנית $M$ הבא, מעל הא״ב $\\{a,b\\}$:\nאיזו מהטענות הבאות נכונה?",
+   "options": [
+    {
+     "type": "text",
+     "value": "המילה $abbbaa$ **שייכת** לשפה של $M$ והמילה $aabba$ **שייכת** לשפה של $M$.",
+     "id": "a"
+    },
+    {
+     "type": "text",
+     "value": "המילה $abbbaa$ **לא שייכת** לשפה של $M$ והמילה $aabba$ **שייכת** לשפה של $M$.",
+     "id": "b"
+    },
+    {
+     "type": "text",
+     "value": "המילה $abbbaa$ **שייכת** לשפה של $M$ והמילה $aabba$ **לא שייכת** לשפה של $M$.",
+     "id": "c"
+    },
+    {
+     "type": "text",
+     "value": "המילה $abbbaa$ **לא שייכת** לשפה של $M$ והמילה $aabba$ **לא שייכת** לשפה של $M$.",
+     "id": "d"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "solution-pdf",
+   "official": true,
+   "confidence": "high",
+   "explanation": "האוטומט מזהה את המשלימה של שפת הפלינדרומים: הוא מנחש זוג מקומות סימטריים שבהם האותיות שונות. שתי המילים $abbbaa$ ו-$aabba$ אינן פלינדרומים ולכן שתיהן מתקבלות.",
+   "image": "images/exams/24A-A-Q18.png"
+  }
+ ]
+}
