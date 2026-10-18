@@ -52,6 +52,17 @@ const $ = s => document.querySelector(s);
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function show(id){ document.querySelectorAll(".screen").forEach(s=>s.classList.add("hidden")); $("#"+id).classList.remove("hidden"); window.scrollTo({top:0,behavior:"smooth"}); }
 function escapeHtml(s){ return String(s).replace(/[&<>]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m])); }
+/* bidi isolates (bidi.js) on pre-rendered HTML; MathML stays untouched */
+function bi(h){ return window.bidiHtml ? window.bidiHtml(h) : h; }
+/* a formula wider than its line cannot wrap: make it a scroll box of its own */
+function markWide(root){
+  (root || document).querySelectorAll(".math-lines,.mwrap,.nobr,.math-inline").forEach(el=>{
+    el.classList.remove("wide");
+    const box = el.parentElement;
+    if(box && Math.max(el.getBoundingClientRect().width, el.scrollWidth) > box.clientWidth + 1) el.classList.add("wide");
+  });
+}
+
 function optById(q,id){ return (q.options||[]).find(o=>o.id===id); }
 function acceptedIdsOf(q){ return (Array.isArray(q.acceptedIds) && q.acceptedIds.length) ? q.acceptedIds : [q.correctId]; }
 function isAccepted(q,id){ return id!=null && acceptedIdsOf(q).includes(id); }
@@ -245,7 +256,8 @@ function renderQuestion(){
   badge.className = "chip " + (q.official?"official":"unofficial");
 
   $("#qContext").innerHTML = q.contextId ? contextHtml(CTX[q.contextId]) : "";
-  $("#questionText").innerHTML = q.questionHtml;
+  $("#questionText").innerHTML = bi(q.questionHtml);
+  markWide($("#questionText"));
   $("#questionText").dataset.qid = q.id;
   $("#qExtras").innerHTML = extrasHtml(q);
   if(window.Feedback) window.Feedback.slot($("#qExtras"), "q", reportData(q));
@@ -315,9 +327,10 @@ function paintAnswered(v){
   fb.className = "feedback " + (correct?"good":"bad");
   const srcNote = SRC_NOTE[q.answerSource] || "";
   fb.innerHTML = `<div class="verdict">${correct?"✓ נכון":"✗ לא נכון"}</div>`+
-    `<div class="expl">${q.explanationHtml||""}</div>`+
+    `<div class="expl">${bi(q.explanationHtml||"")}</div>`+
     (srcNote?`<span class="note">${escapeHtml(srcNote)}</span>`:"")+
     `<span class="note">מקור: ${escapeHtml(examLabelOf(q))}, שאלה ${q.num}</span>`;
+  markWide(fb);
   $("#nextBtn").classList.remove("hidden");
 }
 
@@ -388,12 +401,12 @@ function renderResults(correct, byTopic, review){
     const acc = acceptedIdsOf(v);
     const correctTxt = acc.map(id=>optionHtml(optById(v,id))).join(`<span class="or">או</span>`);
     return `<div class="rev ${r.ok?"ok":"bad"}">
-      <div class="rq">${v.questionHtml}</div>
+      <div class="rq">${bi(v.questionHtml)}</div>
       ${v.contextId?contextHtml(CTX[v.contextId]):""}
       ${extrasHtml(v)}
       <div class="ra"><span class="${r.ok?"good":"miss"}">תשובתך: ${chosenTxt}</span>`+
       (r.ok?"":` · <span class="good">${acc.length>1?"נכונות":"הנכונה"}: ${correctTxt}</span>`)+
-      `<br>${v.explanationHtml||""}</div>${reportRowHtml(v)}</div>`;
+      `<br>${bi(v.explanationHtml||"")}</div>${reportRowHtml(v)}</div>`;
   }).join("");
 }
 
@@ -482,10 +495,10 @@ function bindGlobal(){
     // each brief is written to be read then drilled, so surface the drill entry point
     const n = s.topic ? countFor(s.topic, ALL) : 0;
     const drill = n ? `<button class="btn primary learn-drill" data-topic="${s.topic}">תרגל נושא זה ▶ <span class="n">${n}</span></button>` : "";
-    content.innerHTML = `<div class="learn-head"><h2 class="learn-h">${escapeHtml(s.title)}</h2>${drill}</div>` + s.html;
+    content.innerHTML = `<div class="learn-head"><h2 class="learn-h">${bi(escapeHtml(s.title))}</h2>${drill}</div>` + bi(s.html);
     toc.querySelectorAll("button").forEach((b,j)=> b.classList.toggle("active", j===idx));
     const active=toc.querySelector("button.active"); if(active) active.scrollIntoView({block:"nearest"});
-    markScrollable();
+    markWide(content); markScrollable();
     fill.style.width = ((idx+1)/data.length*100)+"%";
     pos.textContent = `${idx+1} / ${data.length}`;
     prevB.disabled=idx===0; nextB.disabled=idx===data.length-1;
@@ -524,11 +537,11 @@ function bindGlobal(){
     const acc=acceptedIdsOf(q);
     peekBody.innerHTML =
       (q.contextId?contextHtml(CTX[q.contextId]):"") +
-      `<div class="qpeek-q">${q.questionHtml}</div>` + extrasHtml(q) +
+      `<div class="qpeek-q">${bi(q.questionHtml)}</div>` + extrasHtml(q) +
       `<ol class="qpeek-opts">` + q.options.map((o,i)=>
         `<li class="${acc.includes(o.id)?"right":""}" data-oid="${o.id}"><span class="key">${HE_KEYS[i]||i+1}</span>`+
         `<span class="txt">${optionHtml(o)}</span></li>`).join("") + `</ol>` +
-      (q.explanationHtml ? `<div class="qpeek-exp"><strong>הסבר:</strong> ${q.explanationHtml}</div>` : "");
+      (q.explanationHtml ? `<div class="qpeek-exp"><strong>הסבר:</strong> ${bi(q.explanationHtml)}</div>` : "");
     peekTopic=q.topic;
     peekDrill.classList.toggle("hidden", !countFor(q.topic, ALL));
     peek.classList.remove("hidden");

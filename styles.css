@@ -671,10 +671,11 @@ math[display="block"]{display:block;margin:.35rem 0}
 .learn-content blockquote.cal h3{margin-top:.2rem}
 
 /* checklists ("צ׳קליסט לפני המבחן") */
-.learn-content li.task{list-style:none;display:flex;align-items:flex-start;gap:.55rem;margin-inline-start:-1rem}
-.learn-content li.task .box{flex:none;width:1.05em;height:1.05em;margin-top:.28em;border-radius:5px;
+/* block, not flex: in a flex <li> every inline child (<b>, a bidi isolate) became its own flex item */
+.learn-content li.task{list-style:none;display:block;position:relative;padding-inline-start:1.6rem;margin-inline-start:-1rem}
+.learn-content li.task .box{position:absolute;inset-inline-start:0;top:.28em;width:1.05em;height:1.05em;border-radius:5px;
   border:2px solid var(--line-strong);background:var(--card2)}
-.learn-content li.task.done .box{background:var(--ok);border-color:var(--ok);position:relative}
+.learn-content li.task.done .box{background:var(--ok);border-color:var(--ok)}
 .learn-content li.task.done .box::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;
   color:var(--brand-ink);font-size:.8em;font-weight:900}
 
@@ -760,3 +761,9 @@ math[display="block"]{display:block;margin:.35rem 0}
 .opt .txt{min-width:0}
 .math-wrapd{white-space:normal;line-height:2;overflow-x:visible}
 .math-wrapd math{font-size:1.12em}
+
+/* bidi isolates (bidi.js): a formula inside Hebrew keeps its left-to-right order */
+bdi.ltr{unicode-bidi:isolate;overflow-wrap:anywhere}
+bdi.ltr.nw{white-space:nowrap}
+/* a formula wider than its line scrolls inside its own box (markWide in app.js) */
+.math-lines.wide,.mwrap.wide,.nobr.wide,.math-inline.wide{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
