@@ -1,6 +1,6 @@
 # Build report
 
-**349 questions**, 0 contexts, 6394 math snippets, 8 duplicate groups (340 unique questions).
+**349 questions**, 0 contexts, 6700 math snippets, 8 duplicate groups (340 unique questions).
 
 ## By topic
 

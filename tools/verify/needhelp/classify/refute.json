@@ -1,0 +1,217 @@
+{
+ "course": "classify",
+ "method": "Each language classified by hand with a pumping-lemma or closure argument (finite / regular / CFL-not-regular / not CFL); pumping-game words checked against the adversary choosing y.",
+ "questions": {
+  "K01-Q1": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K01-Q2": {
+   "my_answer": 3,
+   "key": 3,
+   "verdict": "agree"
+  },
+  "K01-Q3": {
+   "my_answer": 3,
+   "key": 3,
+   "verdict": "agree"
+  },
+  "K01-Q4": {
+   "my_answer": 4,
+   "key": 4,
+   "verdict": "agree"
+  },
+  "K01-Q5": {
+   "my_answer": 2,
+   "key": 2,
+   "verdict": "agree"
+  },
+  "K02-Q1": {
+   "my_answer": 2,
+   "key": 2,
+   "verdict": "agree"
+  },
+  "K02-Q2": {
+   "my_answer": 2,
+   "key": 2,
+   "verdict": "agree"
+  },
+  "K02-Q3": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K02-Q4": {
+   "my_answer": 3,
+   "key": 3,
+   "verdict": "agree"
+  },
+  "K02-Q5": {
+   "my_answer": 2,
+   "key": 2,
+   "verdict": "agree"
+  },
+  "K03-Q1": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K03-Q2": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K03-Q3": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K03-Q4": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K03-Q5": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K04-Q1": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K04-Q2": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K04-Q3": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K04-Q4": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K04-Q5": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K05-Q1": {
+   "my_answer": 3,
+   "key": 3,
+   "verdict": "agree"
+  },
+  "K05-Q2": {
+   "my_answer": 4,
+   "key": 4,
+   "verdict": "agree"
+  },
+  "K05-Q3": {
+   "my_answer": 3,
+   "key": 3,
+   "verdict": "agree"
+  },
+  "K05-Q4": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K05-Q5": {
+   "my_answer": 3,
+   "key": 3,
+   "verdict": "agree"
+  },
+  "K06-Q1": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K06-Q2": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K06-Q3": {
+   "my_answer": 4,
+   "key": 4,
+   "verdict": "agree"
+  },
+  "K06-Q4": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K06-Q5": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K07-Q1": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K07-Q2": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K07-Q3": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K07-Q4": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "K07-Q5": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  }
+ },
+ "boss": {
+  "24A-B-Q8": {
+   "exists": true,
+   "key_index": 3,
+   "note": "bank id present; topic matches level; keyed answer re-derived by hand where text-only"
+  },
+  "26A-A-Q17": {
+   "exists": true,
+   "key_index": 4,
+   "note": "bank id present; topic matches level; keyed answer re-derived by hand where text-only"
+  },
+  "21S-A-Q3": {
+   "exists": true,
+   "key_index": 2,
+   "note": "bank id present; topic matches level; keyed answer re-derived by hand where text-only"
+  },
+  "25A-B-Q12": {
+   "exists": true,
+   "key_index": 3,
+   "note": "bank id present; topic matches level; keyed answer re-derived by hand where text-only"
+  },
+  "26A-A-Q12": {
+   "exists": true,
+   "key_index": 2,
+   "note": "bank id present; topic matches level; keyed answer re-derived by hand where text-only"
+  }
+ },
+ "findings": [
+  "26A-A-Q12 (boss, classify course) first hand-derived as I false/II true; corrected on re-check: a^m b^n c^n with m>=n is not CF, so both false (matches the key).",
+  "Option-position wording: nerode N05 lesson/why/recap and classify K01 lesson cited options by number/letter; reworded to name the content."
+ ],
+ "summary": {
+  "n": 35,
+  "agree": 35,
+  "disagree": []
+ }
+}

@@ -1,0 +1,216 @@
+{
+ "course": "fa",
+ "method": "Own DFA/NFA tables and python re checks over all strings up to length 8 (sim.py); subset-construction count and Myhill-Nerode ranks recomputed independently.",
+ "questions": {
+  "F01-Q1": {
+   "my_answer": 3,
+   "key": 3,
+   "verdict": "agree"
+  },
+  "F01-Q2": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F01-Q3": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F01-Q4": {
+   "my_answer": 2,
+   "key": 2,
+   "verdict": "agree"
+  },
+  "F01-Q5": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F02-Q1": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F02-Q2": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F02-Q3": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F02-Q4": {
+   "my_answer": 4,
+   "key": 4,
+   "verdict": "agree"
+  },
+  "F02-Q5": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F03-Q1": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F03-Q2": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F03-Q3": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F03-Q4": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F03-Q5": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F04-Q1": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F04-Q2": {
+   "my_answer": 2,
+   "key": 2,
+   "verdict": "agree"
+  },
+  "F04-Q3": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F04-Q4": {
+   "my_answer": 3,
+   "key": 3,
+   "verdict": "agree"
+  },
+  "F04-Q5": {
+   "my_answer": 3,
+   "key": 3,
+   "verdict": "agree"
+  },
+  "F05-Q1": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F05-Q2": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F05-Q3": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F05-Q4": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F05-Q5": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F06-Q1": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F06-Q2": {
+   "my_answer": 2,
+   "key": 2,
+   "verdict": "agree"
+  },
+  "F06-Q3": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F06-Q4": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F06-Q5": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F07-Q1": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F07-Q2": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F07-Q3": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F07-Q4": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  },
+  "F07-Q5": {
+   "my_answer": 1,
+   "key": 1,
+   "verdict": "agree"
+  }
+ },
+ "boss": {
+  "21S-A-Q24": {
+   "exists": true,
+   "key_index": 4,
+   "note": "bank id present; topic matches level; keyed answer re-derived by hand where text-only"
+  },
+  "MQ1-Q7": {
+   "exists": true,
+   "key_index": 2,
+   "note": "bank id present; topic matches level; keyed answer re-derived by hand where text-only"
+  },
+  "21S-B-Q4": {
+   "exists": true,
+   "key_index": 1,
+   "note": "bank id present; topic matches level; keyed answer re-derived by hand where text-only"
+  },
+  "24A-A-Q1": {
+   "exists": true,
+   "key_index": 2,
+   "note": "bank id present; topic matches level; keyed answer re-derived by hand where text-only"
+  },
+  "19B-A-Q17": {
+   "exists": true,
+   "key_index": 1,
+   "note": "bank id present; topic matches level; keyed answer re-derived by hand where text-only; image-based question covered by the bank refutation"
+  }
+ },
+ "findings": [
+  "No option-position wording in this course."
+ ],
+ "summary": {
+  "n": 35,
+  "agree": 35,
+  "disagree": []
+ }
+}
