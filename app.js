@@ -249,11 +249,12 @@ function renderQuestion(){
   }
   const v=S.current;
 
-  $("#qTopic").textContent = q.topicLabel || TOPIC_LABEL[q.topic] || q.topic;
-  $("#qSource").textContent = `${examLabelOf(q)} · שאלה ${q.num}`;
+  const crs = q.course;   // a guided-course question ("צריך עזרה?") — see course-ui.js
+  $("#qTopic").textContent = crs ? crs.badge : (q.topicLabel || TOPIC_LABEL[q.topic] || q.topic);
+  $("#qSource").textContent = crs ? crs.levelTitle : `${examLabelOf(q)} · שאלה ${q.num}`;
   const badge=$("#qBadge");
-  badge.textContent = q.official ? "מפתרון רשמי" : "מפתח מודל";
-  badge.className = "chip " + (q.official?"official":"unofficial");
+  badge.textContent = crs ? (q.fromExam ? "📝 שאלה ממבחן" : "שאלת תרגול") : q.official ? "מפתרון רשמי" : "מפתח מודל";
+  badge.className = "chip " + (crs ? (q.fromExam?"official":"soft") : q.official?"official":"unofficial");
 
   $("#qContext").innerHTML = q.contextId ? contextHtml(CTX[q.contextId]) : "";
   $("#questionText").innerHTML = bi(q.questionHtml);
@@ -285,14 +286,19 @@ function renderQuestion(){
     $("#prevBtn").disabled = S.pos===0;
     $("#streakBox").textContent = `נענו ${Object.keys(S.exam.answers).length}/${S.pool.length}`;
   } else {
-    $("#quizMeta").textContent = `שאלה ${pos+1}`;
+    $("#quizMeta").textContent = S.mode==="course" ? `שאלה ${pos+1}/${S.pool.length}` : `שאלה ${pos+1}`;
     $("#prevBtn").disabled = S.hpos===0;
     $("#nextBtn").classList.toggle("hidden", !v.answered);   // appears after answering
     $("#submitExamBtn").classList.add("hidden");
     if(v.answered) paintAnswered(v);                        // navigated back to an answered question
-    const a=P.stats.answered,c=P.stats.correct;
-    $("#streakBox").textContent = `רצף נכון: ${S.streak||0} · דיוק כולל ${a?Math.round(c/a*100):0}%`;
+    $("#streakBox").textContent = streakText();
   }
+}
+// practice footer: streak + bank accuracy (a course keeps its own score, so streak only)
+function streakText(){
+  if(S.mode==="course") return `רצף נכון: ${S.streak||0}`;
+  const a=P.stats.answered,c=P.stats.correct;
+  return `רצף נכון: ${S.streak||0} · דיוק כולל ${a?Math.round(c/a*100):0}%`;
 }
 
 /* ---------- answering ---------- */
@@ -307,12 +313,11 @@ function choose(disp){
   if(v.answered) return;
   v.answered=true; v.chosen=disp; v.correct = v.correctSet.has(disp);
   paintAnswered(v);
-  recordAnswer(q, v.correct);
+  if(S.mode==="course") window.COURSE.record(q, v.correct); else recordAnswer(q, v.correct);   // a course keeps its own score
   S.streak = v.correct ? (S.streak||0)+1 : 0;
   $("#nextBtn").focus();
   renderTopStats();
-  const a=P.stats.answered,c=P.stats.correct;
-  $("#streakBox").textContent = `רצף נכון: ${S.streak} · דיוק כולל ${a?Math.round(c/a*100):0}%`;
+  $("#streakBox").textContent = streakText();
 }
 /* Paint an answered practice question: lock the options, mark right/wrong, show the feedback.
    Runs when answering and again when navigating back to an already-answered question. */
@@ -326,6 +331,13 @@ function paintAnswered(v){
   const fb=$("#feedback");
   fb.className = "feedback " + (correct?"good":"bad");
   const srcNote = SRC_NOTE[q.answerSource] || "";
+  if(q.course){
+    // guided course: own question (no source line) or a real exam question with a peek button on its id
+    const expl = window.crsRich ? window.crsRich(q.explanationHtml||"") : bi(q.explanationHtml||"");
+    fb.innerHTML = `<div class="verdict">${correct?"✓ נכון":"✗ לא נכון"}</div>`+
+      `<div class="expl">${expl}</div>`+
+      (q.fromExam ? `<span class="note">📝 מתוך ${escapeHtml(q.fromExam)} (<button type="button" class="qref" data-q="${q.examId}">${q.examId}</button>)${q.official?"":" · "+escapeHtml(srcNote||"מפתח מודל")}</span>` : "");
+  } else
   fb.innerHTML = `<div class="verdict">${correct?"✓ נכון":"✗ לא נכון"}</div>`+
     `<div class="expl">${bi(q.explanationHtml||"")}</div>`+
     (srcNote?`<span class="note">${escapeHtml(srcNote)}</span>`:"")+
@@ -344,6 +356,12 @@ function next(){
     if(S.hpos<S.hist.length-1){ S.hpos++; renderQuestion(); return; }   // forward through history after going back
     if(S.pos>=S.pool.length-1){ S.pool = shuffle(S.pool); S.pos=0; } else S.pos++;
     S.hpos++;
+    renderQuestion();
+  } else if(S.mode==="course"){
+    if(!S.current.answered) return;
+    if(S.hpos<S.hist.length-1){ S.hpos++; renderQuestion(); return; }
+    if(S.pos>=S.pool.length-1){ window.COURSE.finishLevel(); return; }   // level done → summary
+    S.pos++; S.hpos++;
     renderQuestion();
   } else {
     if(S.pos<S.pool.length-1){ S.pos++; renderQuestion(); }
@@ -411,12 +429,17 @@ function renderResults(correct, byTopic, review){
 }
 
 /* ---------- controls ---------- */
-function quit(){ clearInterval(S.exam.timer); S._views=null; S.hist=[]; S.hpos=0; S.streak=0; initStart(); show("screen-start"); }
+function quit(){
+  clearInterval(S.exam.timer); S._views=null; S.hist=[]; S.hpos=0; S.streak=0;
+  if(S.mode==="course") S.mode=(document.querySelector('input[name=mode]:checked')||{}).value||"practice";
+  initStart(); show("screen-start");
+  window.dispatchEvent(new window.Event("afq:home"));   // course cards repaint their progress
+}
 function bindGlobal(){
   $("#nextBtn").onclick=next;
   $("#prevBtn").onclick=prev;
   $("#submitExamBtn").onclick=()=>submitExam(false);
-  $("#quitBtn").onclick=()=>{ if(S.mode!=="exam"||confirm("לצאת מהמבחן? ההתקדמות לא תישמר.")) quit(); };
+  $("#quitBtn").onclick=()=>{ if(S.mode==="course"){ window.COURSE.exit(); return; } if(S.mode!=="exam"||confirm("לצאת מהמבחן? ההתקדמות לא תישמר.")) quit(); };
   $("#backHomeBtn").onclick=quit;
   function goHome(){
     const inExamQuiz = S.mode==="exam" && !$("#screen-quiz").classList.contains("hidden");
@@ -547,6 +570,7 @@ function bindGlobal(){
     peek.classList.remove("hidden");
     $("#qpeekClose").focus({preventScroll:true});
   }
+  window.openQPeek = openPeek;   // the guided courses link exam ids to this peek too
   function closePeek(){ peek.classList.add("hidden"); peekBody.innerHTML=""; peekTopic=null; }
   const peekOpen=()=>!peek.classList.contains("hidden");
   peek.addEventListener("click", e=>{ if(e.target===peek) closePeek(); });

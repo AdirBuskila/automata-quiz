@@ -120,3 +120,26 @@ DB-app engine, single file, no modules. `S` session state, `P` progress in `loca
 single entry into a topic drill (`?practice=<key>`). CSS is token-driven: dark `:root` default,
 `:root[data-theme="light"]`, and the same light palette under `prefers-color-scheme` — change a
 color in all three. Bump `?v=N` in `index.html` when shipping CSS/JS changes.
+
+## Guided courses ("🧭 צריך עזרה?")
+
+Four ground-up courses (`fa`, `nerode`, `classify`, `cf`; plan and reasoning in `docs/needhelp_plan.md`), ported from
+machine-learning-quiz: `courses.js` registry, `course-ui.js` screens, one generated file per level in
+`courses/<course>/<ID>.js` (**do not hand-edit**: they come from `tools/needhelp/<course>/<ID>.py` through
+`tools/build_courses.py`, which renders `$TeX$` to MathML with the bank's own pipeline). The quiz runs on the main engine
+with `S.mode="course"`; course answers never touch `afq_progress_v1`, each course keeps `afq_crs_<id>_v1` (try/catch).
+All text goes through `bidi.js` (`bidiHtml`) and the MathML stays untouched; exam ids in lessons/explanations become
+peek buttons (`window.openQPeek`); the report-a-mistake link works on course questions (`reportData` handles `q.course`).
+
+- **Source**: a level is `level(id, order, icon, title, goal, lesson=…html with $tex$…, questions=[Q(...) …])`. Each option
+  is `C(text, cond)` (truth computed by a simulator in `tools/verify/needhelp/lib.py`) or `J(text, truth)` (a judged
+  conceptual statement, kept rare). `Q` refuses to build unless exactly ONE option is true. 4–6 questions per level,
+  last level `boss` = 4–6 `B("<bank id>", recap)` bank questions that no lesson cites (the peek would reveal them).
+- **Lesson/question text rules**: no Hebrew inside `$…$` (build error); write `**bold**`, not HTML, in questions; a plain
+  `a^n` (caret) in visible text is flagged by the render audit, so put math in `$…$`; options citing siblings by letter
+  are forbidden (options shuffle). Python raw strings only: Git-Bash heredocs and `sed` mangle backslashes.
+- **Commands**: `PYTHONUTF8=1 python tools/build_courses.py [course]` · `node tools/course_check.js --sync` (lint + writes the
+  script tags into index.html; `--dump <course> [level]` prints questions with keys) · `node tools/course_flow.js all light mobile`
+  (every level end to end in headless Chrome) · `python tools/verify/needhelp/<course>/check.py` (re-imports the course and
+  cross-validates the simulators against `re`, derivation search and a second PDA runner).
+- **Render audit**: `node ../course-factory/scripts/render_audit.js .` must report 0 findings (bank + learn + courses).
