@@ -108,7 +108,7 @@ comp = Scene("complement", "משלים", [
       say="למה זה עובד? כי באסאד לכל מילה יש ריצה אחת ומלאה. אנחנו רק הופכים את התשובה בסוף שלה.", do=show("cm-r2")),
     P("באסל״ד זה לא עובד, כי שם יש הרבה ריצות. נראה את זה ברמה הבאה.",
       say="באסלאד זה לא עובד, כי שם יש הרבה ריצות. נראה את זה ברמה הבאה.", hold=0.5),
-], stage='<div class="swap" style="--swap-h:360px">'
+], stage='<div class="swap" style="--swap-h:420px">'
          f'<div id="cm-a">{st.dfa_svg("cma", D1, POS, N3, w=900, h=300)}<div class="hint">$L$: מכילות $11$</div></div>'
          f'<div id="cm-b" class="h">{st.dfa_svg("cmb", DC, POS, N3, w=900, h=300)}<div class="hint">$\\overline{{L}}$: לא מכילות $11$</div></div>'
          '</div>'
