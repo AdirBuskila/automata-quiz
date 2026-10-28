@@ -10,3 +10,6 @@ tools/raw/*/
 
 # scratch crops produced while checking figures
 tools/_*.png
+
+# rendered videos, review frames, TTS cache (regenerable; no large binaries in git)
+videos/out/
