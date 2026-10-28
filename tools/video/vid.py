@@ -256,7 +256,7 @@ def build_timeline(V):
             audio, bounds = tts(text)
             dur = len(audio) / 2 / SR
             starts = phrase_starts([p.say for p in g], bounds, dur)
-            for k, b in enumerate(bounds):      # (start, duration) of every spoken word, for Hila's mouth
+            for k, b in enumerate(bounds):      # (start, duration) of every spoken word, for Shosh's mouth
                 d = b[2] if len(b) > 2 else ((bounds[k + 1][0] if k + 1 < len(bounds) else dur) - b[0]) * 0.8
                 words.append((t + b[0], d))
             for k, p in enumerate(g):
@@ -285,7 +285,7 @@ def render_math(chunks):
 
 
 def compose(V, scenes, phrases, words, total):
-    import hila
+    import shosh
     css = (pathlib.Path(__file__).parent / "video.css").read_text(encoding="utf-8")
     blocks = []
     for sc in scenes:
@@ -325,13 +325,13 @@ def compose(V, scenes, phrases, words, total):
 <html lang="he" dir="rtl"><head><meta charset="utf-8"><title>{V.id}</title><style>{css}</style></head><body>
 <div id="root" data-composition-id="root" data-width="1920" data-height="1080" data-start="0" data-duration="{total:.3f}">
 {"".join(body)}
-{hila.svg()}
+{shosh.svg()}
 <audio id="narr" src="narration.wav" data-start="0" data-duration="{total:.3f}"></audio>
 </div>
 <script src="gsap.min.js"></script>
 <script>const tl=gsap.timeline({{paused:true}});
 {"".join(js)}
-{hila.timeline_js(words, total)}
+{shosh.timeline_js(words, total)}
 window.__timelines={{root:tl}};</script>
 </body></html>"""
 
