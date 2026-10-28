@@ -29,19 +29,26 @@ def _unit(dx, dy):
     return dx / d, dy / d
 
 
-def dfa_svg(pfx, D, pos, names, w=900, h=520, bend=None, loops=None, start_side="left", scale=1.15):
+def dfa_svg(pfx, D, pos, names, w=900, h=520, bend=None, loops=None, start_side="left", scale=1.15, edges=None):
     """Draw the verified DFA/NFA-like object D (needs .alpha, .delta {(q,a):r}, .start, .acc).
 
     pos: {state: (x, y)}; names: {state: 'q_0'}; bend: {(p, r): k} curvature override (k>0 bends left of p->r);
-    loops: {state: 'up'|'down'}. Ids: {pfx}-s-<q> state group, {pfx}-hs-<q> state highlight,
+    loops: {state: 'up'|'down'}. Works for a DFA (delta values are states), an NFA (delta values are sets,
+    letter '' = ε), or any labelled graph via edges=[(p, label, r)] (e.g. PDA labels "a,x→y"). Ids: {pfx}-s-<q> state group, {pfx}-hs-<q> state highlight,
     {pfx}-he-<p>-<r> edge highlight, {pfx}-tag-<q> a hidden caption slot under the state.
     """
     bend = dict(bend or {})
     loops = dict(loops or {})
-    edges = {}
-    for (p, a), r in D.delta.items():
-        edges.setdefault((p, r), []).append(a)
-    order = {a: i for i, a in enumerate(D.alpha)}
+    pairs = {}
+    if edges is not None:
+        for p, lab, r in edges:
+            pairs.setdefault((p, r), []).append(lab)
+    else:
+        for (p, a), r in D.delta.items():
+            for rr in (sorted(r, key=str) if isinstance(r, (set, frozenset)) else [r]):
+                pairs.setdefault((p, rr), []).append(a)
+    edges = pairs
+    order = {a: i for i, a in enumerate(getattr(D, "alpha", ()))}
     out = [f'<svg class="dfa" id="{pfx}" viewBox="0 0 {w} {h}" width="{w * scale:.0f}" height="{h * scale:.0f}" direction="ltr">',
            '<defs>',
            f'<marker id="{pfx}-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c9cdf0"/></marker>',
@@ -49,7 +56,7 @@ def dfa_svg(pfx, D, pos, names, w=900, h=520, bend=None, loops=None, start_side=
            '</defs>']
     base, hi = [], []
     for (p, r), letters in sorted(edges.items(), key=lambda e: (str(e[0][0]), str(e[0][1]))):
-        label = ",".join(sorted(letters, key=lambda a: order[a]))
+        label = ",".join("ε" if a == "" else a for a in sorted(letters, key=lambda a: (order.get(a, 99), a)))
         x1, y1 = pos[p]
         if p == r:
             up = loops.get(p, "up") == "up"

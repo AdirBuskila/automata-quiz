@@ -33,7 +33,7 @@ b,strong{color:#fff}
 
 /* subtitles */
 .sub{position:absolute;left:0;right:0;bottom:34px;display:flex;justify-content:center;pointer-events:none}
-.sub>span{display:inline-block;max-width:1700px;background:rgba(5,6,14,.82);border:1px solid var(--line);border-radius:16px;
+.sub>span{display:inline-block;max-width:1360px;background:rgba(5,6,14,.82);border:1px solid var(--line);border-radius:16px;
   padding:12px 30px;font-size:44px;line-height:1.38;text-align:center;direction:rtl}
 
 /* cards */
@@ -99,3 +99,6 @@ table.delta .mark{color:var(--brand);font-size:26px;margin-inline-end:6px}
 .swap{position:relative;width:100%;height:var(--swap-h,250px)}
 .swap>div{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:18px}
 .stage .card{font-size:32px;line-height:1.45;direction:rtl;max-width:980px}
+
+/* Hila, the presenter (tools/video/hila.py) */
+.hila{position:absolute;right:30px;bottom:18px;width:190px;height:224px;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}

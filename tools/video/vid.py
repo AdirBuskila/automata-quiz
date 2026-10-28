@@ -182,7 +182,7 @@ async def _tts(text, mp3):
         if ch["type"] == "audio":
             audio += ch["data"]
         elif ch["type"] == "WordBoundary":
-            bounds.append((ch["offset"] / 1e7, ch["text"]))
+            bounds.append((ch["offset"] / 1e7, ch["text"], ch["duration"] / 1e7))
     mp3.write_bytes(bytes(audio))
     return bounds
 
@@ -208,7 +208,7 @@ def phrase_starts(says, bounds, dur):
         for t in TOK.findall(s):
             toks.append(t)
             owner.append(i)
-    ev = [(t, TOK.findall(w)) for t, w in bounds]
+    ev = [(b[0], TOK.findall(b[1])) for b in bounds]
     ev_toks, ev_time = [], []
     for t, ws in ev:
         for w in ws:
@@ -236,7 +236,7 @@ def build_timeline(V):
     pcm = bytearray()
     t = 0.0
     sil = lambda s: b"\x00\x00" * int(SR * s)
-    scenes, phrases = [], []
+    scenes, phrases, words = [], [], []
     LEAD, SCENE_GAP, CHUNK_GAP = 0.5, 0.7, 0.28
     for S in V.scenes:
         pcm += sil(LEAD)
@@ -256,6 +256,9 @@ def build_timeline(V):
             audio, bounds = tts(text)
             dur = len(audio) / 2 / SR
             starts = phrase_starts([p.say for p in g], bounds, dur)
+            for k, b in enumerate(bounds):      # (start, duration) of every spoken word, for Hila's mouth
+                d = b[2] if len(b) > 2 else ((bounds[k + 1][0] if k + 1 < len(bounds) else dur) - b[0]) * 0.8
+                words.append((t + b[0], d))
             for k, p in enumerate(g):
                 end = t + (starts[k + 1] if k + 1 < len(g) else dur + 0.15)
                 phrases.append({"scene": S.key, "p": p, "start": t + starts[k], "end": end, "text": text})
@@ -267,7 +270,7 @@ def build_timeline(V):
         pcm += sil(SCENE_GAP)
         t += SCENE_GAP
         scenes.append({"scene": S, "start": s_start, "end": t})
-    return bytes(pcm), scenes, phrases, t
+    return bytes(pcm), scenes, phrases, words, t
 
 
 # ----------------------------------------------------------------------------- composition
@@ -281,7 +284,8 @@ def render_math(chunks):
     return [re.sub("\x00M(\\d+)\x00", lambda m: rendered[int(m.group(1))], c) for c in tmp]
 
 
-def compose(V, scenes, phrases, total):
+def compose(V, scenes, phrases, words, total):
+    import hila
     css = (pathlib.Path(__file__).parent / "video.css").read_text(encoding="utf-8")
     blocks = []
     for sc in scenes:
@@ -321,11 +325,13 @@ def compose(V, scenes, phrases, total):
 <html lang="he" dir="rtl"><head><meta charset="utf-8"><title>{V.id}</title><style>{css}</style></head><body>
 <div id="root" data-composition-id="root" data-width="1920" data-height="1080" data-start="0" data-duration="{total:.3f}">
 {"".join(body)}
+{hila.svg()}
 <audio id="narr" src="narration.wav" data-start="0" data-duration="{total:.3f}"></audio>
 </div>
 <script src="gsap.min.js"></script>
 <script>const tl=gsap.timeline({{paused:true}});
 {"".join(js)}
+{hila.timeline_js(words, total)}
 window.__timelines={{root:tl}};</script>
 </body></html>"""
 
@@ -382,14 +388,14 @@ def main():
     if proj.exists():
         shutil.rmtree(proj)
     proj.mkdir(parents=True)
-    pcm, scenes, phrases, total = build_timeline(V)
+    pcm, scenes, phrases, words, total = build_timeline(V)
     with wave.open(str(proj / "narration.wav"), "wb") as w:
         w.setnchannels(1)
         w.setsampwidth(2)
         w.setframerate(SR)
         w.writeframes(pcm)
     shutil.copy(TOOLS / "node_modules" / "gsap" / "dist" / "gsap.min.js", proj)
-    html = compose(V, scenes, phrases, total)
+    html = compose(V, scenes, phrases, words, total)
     for src_img in set(re.findall(r'src="(images/[^"]+)"', html)):
         dst = proj / src_img
         dst.parent.mkdir(parents=True, exist_ok=True)
