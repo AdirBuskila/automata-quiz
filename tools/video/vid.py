@@ -187,15 +187,37 @@ async def _tts(text, mp3):
     return bounds
 
 
+def _complete(text, bounds, pcm):
+    """edge-tts can drop mid-stream and still return audio: require word events for most of the words, the last
+    event near the end of the audio, and a plausible length (Hebrew at this rate: >= ~0.035 s per letter)"""
+    words = len(TOK.findall(text))
+    dur = len(pcm) / 2 / SR
+    if not bounds or len(bounds) < 0.7 * words:
+        return False
+    if bounds[-1][0] > dur or dur - bounds[-1][0] > 4.0:
+        return False
+    return dur >= 0.035 * len(re.sub(r"\W", "", text))
+
+
 def tts(text):
     CACHE.mkdir(parents=True, exist_ok=True)
     h = hashlib.sha1(f"{VOICE}|{RATE}|{text}".encode()).hexdigest()[:16]
     mp3, js = CACHE / f"{h}.mp3", CACHE / f"{h}.json"
-    if not js.exists():
-        js.write_text(json.dumps(asyncio.run(_tts(text, mp3)), ensure_ascii=False), encoding="utf-8")
-    pcm = subprocess.run(["ffmpeg", "-v", "quiet", "-i", str(mp3), "-f", "s16le", "-ac", "1", "-ar", str(SR), "-"],
-                         capture_output=True, check=True).stdout
-    return pcm, json.loads(js.read_text(encoding="utf-8"))
+    decode = lambda: subprocess.run(["ffmpeg", "-v", "quiet", "-i", str(mp3), "-f", "s16le", "-ac", "1", "-ar", str(SR),
+                                     "-"], capture_output=True, check=True).stdout
+    for attempt in range(5):
+        if js.exists() and mp3.exists():
+            pcm, bounds = decode(), json.loads(js.read_text(encoding="utf-8"))
+            if _complete(text, bounds, pcm):
+                return pcm, bounds
+            js.unlink()           # truncated chunk (a dropped connection): never let it into a video
+        try:
+            js.write_text(json.dumps(asyncio.run(_tts(text, mp3)), ensure_ascii=False), encoding="utf-8")
+        except Exception as e:    # "No audio was received" and friends: retry
+            print(f"tts retry {attempt + 1}: {e}", file=sys.stderr)
+            if js.exists():
+                js.unlink()
+    sys.exit(f"TTS failed 5 times for: {text[:80]}…")
 
 
 TOK = re.compile(r"[\w֐-׿]+")
@@ -347,7 +369,9 @@ def stt_check(phrases, outdir):
     import numpy as np
     from faster_whisper import WhisperModel
     m = WhisperModel("ivrit-ai/whisper-large-v3-turbo-ct2", device="cpu", compute_type="int8")
-    sym = {**lexicon.DIGIT, "q": "קיו", "a": "איי", "b": "בי", "e": "איי", "i": "איי"}
+    sym = {**lexicon.DIGIT, "q": "קיו", "a": "איי", "b": "בי", "e": "איי", "i": "איי", "c": "סי", "d": "די",
+           "n": "אן", "m": "אם", "k": "קיי", "x": "אקס", "y": "וואי", "z": "זד", "l": "אל", "r": "אר", "t": "טי",
+           "s": "אס", "j": "גיי", "w": "דאבליו", "u": "יו", "v": "וי", "p": "פי", "g": "גיי", "f": "אף", "h": "אייץ"}
 
     def norm(s):
         """letters only; the recognizer writes digits/Latin letters (0110, Q0, AB) where we spelled them out"""

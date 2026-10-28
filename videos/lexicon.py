@@ -30,7 +30,8 @@ DIGIT = {"0": "אפס", "1": "אחת", "2": "שתיים", "3": "שלוש", "4": 
          "8": "שמונה", "9": "תשע"}
 LETTER = {"a": "אֵיי", "b": "בִּי", "c": "סִי", "d": "דִּי", "x": "אקס", "y": "וואי", "z": "זד"}
 SYMBOL = {r"\varepsilon": "אפסילון", r"\epsilon": "אפסילון", r"\delta": "דלתא", r"\Sigma": "סיגמא",
-          r"\emptyset": "הקבוצה הריקה"}
+          r"\emptyset": "הקבוצה הריקה",
+          r"\ell": "קבוע הניפוח"}    # spoken "אֵל" it collides with the language L
 
 
 def state_say(name):

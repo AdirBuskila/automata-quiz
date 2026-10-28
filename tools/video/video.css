@@ -102,3 +102,7 @@ table.delta .mark{color:var(--brand);font-size:26px;margin-inline-end:6px}
 
 /* Shosh, the presenter (tools/video/shosh.py) */
 .shosh{position:absolute;right:30px;bottom:18px;width:190px;height:224px;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+
+/* Chrome does not stretch the \overline glyph (it renders as a tiny accent): hide it and draw a rule over the base */
+mover:has(>mo[stretchy="true"]:last-child)>mo:last-child{color:transparent}
+mover:has(>mo[stretchy="true"]:last-child)>:first-child{border-top:.065em solid currentColor;padding-top:.06em}
