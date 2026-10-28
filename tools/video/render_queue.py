@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 """Sequential render queue: renders the ids listed in videos/out/_queue.txt one at a time (full render + STT),
 appending results to videos/out/_queue.log. Ids can be appended while it runs; a line "END" stops it once the
-queue is empty. Usage:  PYTHONUTF8=1 python tools/video/render_queue.py
+queue is empty. Usage:  PYTHONUTF8=1 python tools/video/render_queue.py [queue-name]
 """
 import pathlib, subprocess, sys, time
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 OUT = ROOT / "videos" / "out"
-Q, LOG = OUT / "_queue.txt", OUT / "_queue.log"
+NAME = sys.argv[1] if len(sys.argv) > 1 else "_queue"      # a second runner: render_queue.py _queue2
+Q, LOG = OUT / f"{NAME}.txt", OUT / f"{NAME}.log"
 
 
 def log(msg):
