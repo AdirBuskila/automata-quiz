@@ -105,6 +105,7 @@
     $("#crsLesson").innerHTML =
       `<div class="q-head"><span class="chip">שלב ${L.order} מתוך ${C.levels.length}</span><span class="chip soft">${L.questions.length} שאלות${nReal ? ` · ${nReal} מהמבחנים` : ""}</span></div>` +
       `<h2 class="learn-h">${L.icon || ""} ${titleH(L)}</h2><p class="sub crs-goal">${goalH(L)}</p>` +
+      (window.VIDEO_UI ? window.VIDEO_UI.lessonButtons(L.id) : "") +   // video-ui.js: "▶ צפו בסרטון של הרמה"
       `<div class="lesson-body">${lessonHtml(L.lessonHtml)}</div>`;
     view("crsLessonView");
     if (typeof markWide === "function") markWide($("#crsLesson"));

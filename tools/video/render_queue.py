@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Sequential render queue: renders the ids listed in videos/out/_queue.txt one at a time (full render + STT),
 appending results to videos/out/_queue.log. Ids can be appended while it runs; a line "END" stops it once the
-queue is empty. Usage:  PYTHONUTF8=1 python tools/video/queue.py
+queue is empty. Usage:  PYTHONUTF8=1 python tools/video/render_queue.py
 """
 import pathlib, subprocess, sys, time
 

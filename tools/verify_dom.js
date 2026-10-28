@@ -127,4 +127,65 @@ if(LEARN.length){
     "peek → drill starts a practice session of that topic");
 }
 
+// ---- video course ("🎬 קורס וידאו"): boot the full page (every local script of index.html, in order) ----
+{
+  const html=fs.readFileSync(path.join(ROOT,"index.html"),"utf8");
+  const vd=new JSDOM(html,{pretendToBeVisual:true,runScripts:"outside-only",url:"http://localhost/"});
+  const w=vd.window; w.scrollTo=()=>{}; w.HTMLElement.prototype.scrollIntoView=()=>{}; w.confirm=()=>true;
+  w.matchMedia=w.matchMedia||(q=>({matches:false,media:q,addEventListener(){},removeEventListener(){}}));
+  const srcs=[...html.matchAll(/<script src="([^"?]+)(?:\?[^"]*)?"/g)].map(m=>m[1]).filter(s=>!/^https?:/.test(s));
+  // one eval: app.js's top-level consts (QS, S, …) must be visible to the course/video scripts, as in a browser
+  w.eval(srcs.map(s=>fs.readFileSync(path.join(ROOT,s),"utf8")).join("\n;\n"));
+  const v$=s=>w.document.querySelector(s), v$$=s=>[...w.document.querySelectorAll(s)];
+  const VC=w.VIDEO_COURSE, nV=VC?VC.courses.reduce((n,c)=>n+c.videos.length,0):0;
+  assert(srcs.includes("videos.js") && srcs.includes("video-ui.js"), "index.html loads videos.js and video-ui.js");
+  assert(nV===34 && VC.courses.map(c=>c.id).join()==="fa,nerode,classify,cf", `video manifest: ${nV} videos in 4 courses`);
+  const lv=new Set(Object.values(w.COURSES).flatMap(c=>c.levels.map(L=>L.id)));
+  assert(VC.courses.every(c=>c.videos.every(v=>lv.has(v.level))), "every video maps to an existing guided level");
+  v$("#vidEntry").click();
+  assert(!v$("#screen-video").classList.contains("hidden") && !v$("#vidListView").classList.contains("hidden"), "header entry opens the video list");
+  const rows=v$$("#vidCourses .vid-row");
+  assert(rows.length===34, `video list shows ${rows.length} videos`);
+  const order=rows.map(r=>r.dataset.vid), k6=order.indexOf("K06");
+  assert(order[k6+1]==="K06a" && order[k6+2]==="K06b" && order[k6+3]==="K07", "K06a/K06b listed right after K06");
+  // player without a youtube id: local <video>, and on error the "not uploaded" note
+  const noYt=VC.courses.flatMap(c=>c.videos).find(v=>!v.youtube);
+  if(noYt){
+    v$(`.vid-row[data-vid="${noYt.id}"]`).click();
+    assert(!v$("#vidPlayView").classList.contains("hidden"), `player opens for ${noYt.id}`);
+    const vel=v$("#vidFrame video");
+    assert(!!vel && vel.getAttribute("src")===`videos/out/${noYt.id}/${noYt.id}.mp4` && !v$("#vidFrame iframe"), "no youtube id → local <video> fallback");
+    vel.dispatchEvent(new w.Event("error"));
+    assert(!!v$("#vidFrame .vid-missing") && /עוד לא הועלה/.test(v$("#vidFrame").textContent), "video load error → 'not uploaded yet' note");
+  }
+  // youtube embed (simulate an id), prev/next, watched mark, level link
+  const first=w.VIDEO_UI.all[0]; first.youtube="AbCdEfGhIjK";
+  w.VIDEO_UI.openVideo(first.id);
+  const ifr=v$("#vidFrame iframe");
+  assert(!!ifr && ifr.getAttribute("src").startsWith("https://www.youtube-nocookie.com/embed/AbCdEfGhIjK"), "youtube id → youtube-nocookie embed");
+  delete first.youtube;
+  assert(v$("#vidPrev").disabled && !v$("#vidNext").disabled, "first video: prev disabled, next enabled");
+  v$("#vidNext").click();
+  assert(v$("#vidHead").textContent.includes(w.VIDEO_UI.all[1].id), "next → second video");
+  v$("#vidWatchBtn").click();
+  const st=JSON.parse(w.localStorage.getItem("afq_video_v1")||"{}");
+  assert(st.watched && st.watched[w.VIDEO_UI.all[1].id], "watched mark saved in afq_video_v1");
+  assert(!w.localStorage.getItem("afq_progress_v1") || !/F0/.test(w.localStorage.getItem("afq_progress_v1")), "videos don't touch bank progress");
+  v$("#vidBack").click();
+  assert(v$(`.vid-row[data-vid="${w.VIDEO_UI.all[1].id}"]`).classList.contains("watched"), "list shows the ✓ for a watched video");
+  w.VIDEO_UI.openVideo("K06b"); v$("#vidLevel").click();
+  assert(!v$("#screen-course").classList.contains("hidden") && /K06|סגיר/.test(v$("#crsLesson").textContent), "bonus K06b → practice opens guided level K06");
+  // lesson screen: K06 offers its video + both bonus videos; clicking opens the player, back returns to the lesson
+  const lb=v$$("#crsLesson .vid-open").map(b=>b.dataset.vid);
+  assert(lb.join()==="K06,K06a,K06b", `K06 lesson video buttons: ${lb.join()}`);
+  v$('#crsLesson .vid-open[data-vid="K06"]').click();
+  assert(!v$("#vidPlayView").classList.contains("hidden") && v$("#vidBack").textContent.includes("לשיעור"), "lesson button opens the K06 video");
+  v$("#vidBack").click();
+  assert(!v$("#crsLessonView").classList.contains("hidden"), "back from the player returns to the lesson");
+  w.COURSE.openMap("fa"); w.COURSE.openLesson(w.COURSES.fa.levels[0]);
+  assert(v$$("#crsLesson .vid-open").length===1, "F01 lesson has one video button");
+  w.VIDEO_UI.openVideo("F01"); v$("#brandHome").click();
+  assert(v$("#screen-video").classList.contains("hidden") && !v$("#screen-start").classList.contains("hidden"), "brand click from the player goes home");
+}
+
 console.log(fail===0?"\nDOM VERIFY PASSED":`\nDOM VERIFY FAILED (${fail})`); process.exit(fail?1:0);

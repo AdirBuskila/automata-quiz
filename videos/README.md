@@ -32,3 +32,18 @@ The STT model (`ivrit-ai/whisper-large-v3-turbo-ct2`, ~1.6 GB) downloads on firs
 - Every machine is asserted with `tools/verify/needhelp/lib.py`; `Video(bank={id: option})` is checked against
   the bank key. Boss-quiz ids are refused. Never solve the level's own quiz questions.
 - New pronunciation fix -> `videos/lexicon.py` (with the STT evidence in its docstring), never ad hoc.
+
+## Publishing (the app's "🎬 קורס וידאו" screen)
+
+The app lists every video from `videos.js` (generated, never hand-edited). The MP4s are not committed; the site
+plays them from YouTube (unlisted is fine):
+
+1. Upload `videos/out/<ID>/<ID>.mp4` to YouTube and copy the 11-character id from its URL
+   (`https://youtu.be/AbCdEfGhIjK` -> `AbCdEfGhIjK`).
+2. Add it to `videos/youtube.json`, e.g. `{"F01": "AbCdEfGhIjK", "F02": "..."}`.
+3. Rebuild the manifest and commit `videos.js` + `videos/youtube.json`:
+   `PYTHONUTF8=1 $PY tools/video/build_manifest.py` (also refreshes titles from the scripts and durations from
+   `videos/out/<ID>/timeline.json`). Bump `videos.js?v=N` in `index.html`.
+
+A video without a YouTube id plays the local `videos/out/<ID>/<ID>.mp4` when the site is opened from a checkout
+that has it, and otherwise shows "the video hasn't been uploaded yet".
