@@ -177,14 +177,17 @@ exam = Scene("exam", "שאלה ממבחן", [
     p("המלכודת: שניים הם התרגום עם כלל מיותר או חסר, והשלישי כתוב בכיוון ההפוך. מילה קצרה מכריעה.",
       say="המלכודת: שניים הם התרגום עם כלל מיותר או חסר, והשלישי כתוב בכיוון ההפוך. מילה קצרה מכריעה.",
       do=show("xtrap"), hold=0.6),
-], stage=st.raster("ex", "images/exams/23A-B-Q20.png", 560, (702, 295), rings=RINGS)
+], stage=st.raster("ex", "images/exams/23A-B-Q20.png", 520, (702, 295), rings=RINGS)
          + '<div id="xl" class="cf-eq h">$L$ = כל המילים שמסתיימות ב-$b$</div>'
          + '<div id="xw" class="cf-words h"><span>$b$</span><span>$ab$</span><span>$bb$</span>'
            '<span>$\\varepsilon,\\ a,\\ ba\\notin L$</span></div>'
          + '<div class="swap cf-c" style="--swap-h:150px">'
          + '<div id="xg" class="h">' + grammar("xgg", GOOD) + '</div></div>'
-         + f'<div id="xa" class="cf-eq cf-ltr h">${deriv_inline(GRAMS["a"], DA)}$</div>'
-         + st.card("xtrap", "trap", "⚠️ <b>כמעט התרגום</b>: כלל אחד מיותר ($T\\to a$) או חסר ($T\\to b$), או כתוב בכיוון ההפוך, מספיק כדי לפסול."),
+         # the derivation is hidden before the trap card appears: they share one slot (the card ran into the subtitles)
+         + '<div class="swap" style="--swap-h:130px">'
+         + f'<div><div id="xa" class="cf-eq cf-ltr h">${deriv_inline(GRAMS["a"], DA)}$</div></div>'
+         + '<div>' + st.card("xtrap", "trap", "⚠️ <b>כמעט התרגום</b>: כלל אחד מיותר ($T\\to a$) או חסר ($T\\to b$), או כתוב בכיוון ההפוך, מספיק כדי לפסול.")
+         + '</div></div>',
    panel=f'<div class="qstem"><span class="qid">{Q["id"]}</span>איזה מהדקדוקים הבאים יוצר את השפה של האס״ד שמשמאל?</div>'
        + '<div class="cf-sm">' + st.options("q", opts, notes={"a": "גוזר $ba$", "b": "לא גוזר $bb$", "c": "לא גוזר $bb$"}) + '</div>')
 
