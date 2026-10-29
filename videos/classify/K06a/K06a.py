@@ -150,7 +150,9 @@ q2 = Scene("q2", "שאלה 2: לחתוך ב-2025", [
          '<div id="q2-lo2" class="clo-heb h">44 מילים: סופית, ולכן רגולרית ✓</div>'
          '<div id="q2-hi" class="h">$L\\cap\\{a^k\\mid k\\ge2025\\}$ &nbsp; ?</div>'
          '<div id="q2-pf" class="h">$L=(L\\cap\\{a^k\\mid k\\ge2025\\})\\cup(L\\cap\\{a^k\\mid k<2025\\})$'
-         '<div class="clo-heb">? &nbsp; איחוד &nbsp; סופית</div></div></div>'
+         # labels under the formula's parts, left to right like the math (in RTL the "?" landed under the finite part)
+         '<div class="clo-heb" style="direction:ltr;display:flex;justify-content:space-around">'
+         '<span>?</span><span>איחוד</span><span>סופית</span></div></div></div>'
          + '<div id="q2-trap" class="h">' + st.card("q2-trapc", "trap", "⚠️ \"חתכנו עם רגולרית, אז רגולרי\": רק אם גם $L$ רגולרית").replace(' h"', '"') + "</div>",
    panel=W.qcard(Q2, "qb") + st.card("q2-rule", "rule", "🔑 הסרה של מספר סופי של מילים לא משנה רגולריות"))
 
