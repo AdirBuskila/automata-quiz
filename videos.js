@@ -11,7 +11,8 @@ window.VIDEO_COURSE = {
      "id": "F01",
      "level": "F01",
      "title": "הרצת אס״ד על מילה",
-     "minutes": 7
+     "minutes": 7,
+     "youtube": "7LjpDHy3BX0"
     },
     {
      "id": "F02",
@@ -35,7 +36,8 @@ window.VIDEO_COURSE = {
      "id": "F05",
      "level": "F05",
      "title": "ביטויים רגולריים: לקרוא ולכתוב",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "CLe9teW2Ibs"
     },
     {
      "id": "F06",
@@ -53,7 +55,8 @@ window.VIDEO_COURSE = {
      "id": "F08",
      "level": "F08",
      "title": "מבחן גמר: אוטומטים סופיים וביטויים",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "8LDx3FTju6c"
     }
    ]
   },
@@ -66,7 +69,8 @@ window.VIDEO_COURSE = {
      "id": "N01",
      "level": "N01",
      "title": "סיפא מפרידה ומחלקות שקילות",
-     "minutes": 8
+     "minutes": 8,
+     "youtube": "PoU0R_PzXwc"
     },
     {
      "id": "N02",
@@ -78,37 +82,43 @@ window.VIDEO_COURSE = {
      "id": "N03",
      "level": "N03",
      "title": "כמה מצבים באס״ד המינימלי?",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "R_v7LpJVzHc"
     },
     {
      "id": "N04",
      "level": "N04",
      "title": "להוכיח Rank = k: אס״ד וגם קבוצה מפרידה",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "FFlasjNoOjE"
     },
     {
      "id": "N05",
      "level": "N05",
      "title": "משפחת x ו-y: מתי שתי מילים לא ניתנות להפרדה",
-     "minutes": 5
+     "minutes": 6,
+     "youtube": "fC-P2HQ1AqY"
     },
     {
      "id": "N06",
      "level": "N06",
      "title": "Rank של פעולות על שפות",
-     "minutes": 6
+     "minutes": 7,
+     "youtube": "LGyd8oxWSKQ"
     },
     {
      "id": "N07",
      "level": "N07",
      "title": "Rank אינסופי וקבוצה מפרידה אינסופית",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "H9EBfF7v9_Q"
     },
     {
      "id": "N08",
      "level": "N08",
      "title": "מבחן גמר: נרוד, Rank ומינימיזציה",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "kXTqWEQeu3I"
     }
    ]
   },
@@ -127,7 +137,8 @@ window.VIDEO_COURSE = {
      "id": "K02",
      "level": "K02",
      "title": "שפות שנראות קשות ובעצם רגולריות",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "glJnyFZQSZY"
     },
     {
      "id": "K03",
@@ -145,7 +156,8 @@ window.VIDEO_COURSE = {
      "id": "K05",
      "level": "K05",
      "title": "חסרת הקשר מול לא חסרת הקשר: מקונן וחוצה",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "WU_llXnbOyg"
     },
     {
      "id": "K06",
@@ -165,19 +177,22 @@ window.VIDEO_COURSE = {
      "level": "K06",
      "title": "סגירות של שפות חסרות הקשר",
      "bonus": true,
-     "minutes": 8
+     "minutes": 8,
+     "youtube": "0nA8mDkxSy0"
     },
     {
      "id": "K07",
      "level": "K07",
      "title": "משחק למת הניפוח לשפות חסרות הקשר",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "rNGMZbibkkk"
     },
     {
      "id": "K08",
      "level": "K08",
      "title": "מבחן גמר: סיווג שפות",
-     "minutes": 7
+     "minutes": 7,
+     "youtube": "x6r7G5L1ocM"
     }
    ]
   },
@@ -190,13 +205,15 @@ window.VIDEO_COURSE = {
      "id": "G01",
      "level": "G01",
      "title": "לקרוא דקדוק",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "vVYzKytFK2Y"
     },
     {
      "id": "G02",
      "level": "G02",
      "title": "פענוח דקדוקים",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "b3yM4QXWcNo"
     },
     {
      "id": "G03",
@@ -208,7 +225,8 @@ window.VIDEO_COURSE = {
      "id": "G04",
      "level": "G04",
      "title": "חומסקי, ליניארי ימני ורב-משמעיות",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "7hAKi87i4Js"
     },
     {
      "id": "G05",
@@ -220,13 +238,15 @@ window.VIDEO_COURSE = {
      "id": "G06",
      "level": "G06",
      "title": "מהי L(M)? משוואת איזון",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "n3Cw_bqbG4Q"
     },
     {
      "id": "G07",
      "level": "G07",
      "title": "אוטומט מחסנית: סיווג ומודלים",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "ybrpyLbcekQ"
     },
     {
      "id": "G08",

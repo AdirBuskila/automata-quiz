@@ -24,10 +24,10 @@ def manifest():
     return json.loads(s[s.index("{"): s.rindex("}") + 1])
 
 
-def goal(course, vid):
-    if vid in BONUS_GOAL:
+def goal(course, vid, level):
+    if vid in BONUS_GOAL:                 # bonus videos share their level's goal; they get their own
         return BONUS_GOAL[vid]
-    m = re.search(r'"goal":\s*"([^"]*)"', (ROOT / "courses" / course / f"{vid}.js").read_text(encoding="utf-8"))
+    m = re.search(r'"goal":\s*"([^"]*)"', (ROOT / "courses" / course / f"{level}.js").read_text(encoding="utf-8"))
     return m.group(1) if m else ""
 
 
@@ -62,7 +62,7 @@ def main():
             name = BAD.sub("-", f"{n:02d} · {vid} · {v['title']}".replace(": ", " · ").replace("?", "")) + ".mp4"
             shutil.copy2(mp4, dest / name)
             desc = (f"{c['title']} · {vid}{' (סרטון בונוס)' if v.get('bonus') else ''}\n\n"
-                    f"{goal(c['id'], v['level'])}\n\n"
+                    f"{goal(c['id'], vid, v['level'])}\n\n"
                     "הסבר, דוגמאות שרצות צעד אחר צעד, ושאלה אמיתית ממבחן עם המלכודת שלה — "
                     "במושגים ובסימונים של הקורס אוטומטים ושפות פורמליות (62208).\n\n"
                     f"לתרגול השלב הזה ולכל שאר הסרטונים: {SITE}?video={vid}\n"
