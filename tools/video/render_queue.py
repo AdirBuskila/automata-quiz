@@ -31,7 +31,7 @@ def main():
             log("queue ended")
             return
         log(f"start {vid}")
-        r = subprocess.run([sys.executable, str(ROOT / "tools" / "video" / "vid.py"), vid, "--stt", "--workers", "3"],
+        r = subprocess.run([sys.executable, str(ROOT / "tools" / "video" / "vid.py"), vid, "--stt", "--workers", "2"],
                            cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace")
         tail = [l for l in (r.stdout + r.stderr).splitlines() if l.strip() and "Warning" not in l][-4:]
         log(f"{'done' if r.returncode == 0 else 'FAILED'} {vid}: " + " | ".join(tail))
