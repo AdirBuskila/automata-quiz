@@ -172,13 +172,14 @@ exam = Scene("exam", "שאלה ממבחן", [
       do=show("xv", "q-x-d")),
     p("התשובה: $aabbba$ שייכת, ו-$ababb$ לא שייכת.",
       say="התשובה: אֵיי אֵיי בִּי בִּי בִּי אֵיי שייכת, ואֵיי בִּי אֵיי בִּי בִּי לא שייכת.", do=show("q-ok-c"), hold=0.6),
-], stage=st.raster("ex", "images/exams/23A-B-Q23.png", 500, (563, 461), rings=RINGS)
+], stage=st.raster("ex", "images/exams/23A-B-Q23.png", 460, (563, 461), rings=RINGS)
+         # 280px: at 230 the flex column squeezed the edge strip onto the tape and the verdict wrapped over it
          + '<div class="cf-row" style="align-items:center;gap:40px">'
-           '<div class="cf-col" style="width:600px"><div class="swap cf-c" style="--swap-h:230px">'
+           '<div class="cf-col" style="width:600px"><div class="swap cf-c" style="--swap-h:280px">'
            '<div id="par" class="h">' + st.card("parc", "plain", "כל לולאה: אות אחת, וגובה משתנה ב-$1$. לכן אם האורך אי-זוגי, אז המחסנית לא מתרוקנת").replace(' h"', '"')
          + st.card("xtrap", "trap", "⚠️ $ababb$ מגיעה למצב המקבל, אבל עם $b$ במחסנית: <b>לא מתקבלת</b>") + '</div>'
            f'<div id="xt-box" class="h">{st.tape("xt", XA)}{edge_strip("xl", E, PE)}'
-           '<div id="xv" class="verdict ok h">מצב מקבל + מחסנית ריקה: מתקבלת ✓</div></div></div></div>'
+           '<div id="xv" class="verdict ok h" style="font-size:32px;white-space:nowrap">מקבל + מחסנית ריקה: מתקבלת ✓</div></div></div></div>'
          + stack("xs", [c[2] for c in CE]) + '</div>',
    panel=f'<div class="qstem"><span class="qid">{Q["id"]}</span>נתון האוטומט-מחסנית $M$ שמשמאל. איזו טענה נכונה?</div>'
        + '<div class="cf-sm">' + st.options("q", opts) + '</div>')
