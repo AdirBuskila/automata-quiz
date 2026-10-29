@@ -144,7 +144,7 @@ unary = Scene("unary", "מעל אות אחת", [
     P("הכלל: מעל אות אחת בודקים את האורכים הקטנים לפי הסדר: אפס, אחת, שתיים, שלוש.",
       do=show("un-rule"), hold=0.5),
 ], stage=fa.FA_CSS + st.dfa_svg("un", UN, POS3, N3, w=960, h=330, bend={("2", "0"): 0.3})
-    + '<div id="ug-grid" class="h">'
+    + '<div id="ug-grid" class="h" style="margin-top:44px">'
     + fa.member_grid("ug", [r"\varepsilon", "a", "aa", "aaa"], ["L", "(aaa)^*(\\varepsilon+aa)", "(aaa)^*", "a^*"], UG)
     + "</div>",
    panel=st.card("un-r", "ex", "$L=(aaa)^*(\\varepsilon+aa)$: אורך $0$ או $2$ מודולו $3$")
