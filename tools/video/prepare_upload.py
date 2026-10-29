@@ -5,7 +5,8 @@ Writes <dest>/ with one MP4 per video named "NN · <ID> · <title>.mp4" (Studio 
 course order), titles_and_descriptions.txt (title + description per video, ready to paste) and README.txt (Hebrew
 instructions). Refuses a video whose MP4 is missing or older than its script (not re-rendered after a change).
 
-Run:  PYTHONUTF8=1 python tools/video/prepare_upload.py ["C:/Users/Adir/Desktop/YouTube upload"]
+Run:  PYTHONUTF8=1 python tools/video/prepare_upload.py ["C:/Users/Adir/Desktop/YouTube upload"] [--only F01,N03,…]
+--only limits the folder to videos that passed QA (the mtime check cannot see a lexicon change).
 """
 import json, pathlib, re, shutil, sys
 
@@ -31,13 +32,21 @@ def goal(course, vid):
 
 
 def main():
-    dest = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else pathlib.Path.home() / "Desktop" / "YouTube upload")
+    args = sys.argv[1:]
+    only = None
+    if "--only" in args:
+        i = args.index("--only")
+        only = set(args[i + 1].split(","))
+        del args[i:i + 2]
+    dest = pathlib.Path(args[0] if args else pathlib.Path.home() / "Desktop" / "YouTube upload")
     dest.mkdir(parents=True, exist_ok=True)
     blocks, problems, n = [], [], 0
     for c in manifest()["courses"]:
         for v in c["videos"]:
             n += 1
             vid = v["id"]
+            if only is not None and vid not in only:
+                continue
             mp4 = ROOT / "videos" / "out" / vid / f"{vid}.mp4"
             script = ROOT / "videos" / c["id"] / vid / f"{vid}.py"
             if not mp4.exists():
@@ -50,7 +59,7 @@ def main():
             title = f"{vid} · {v['title']} | אוטומטים ושפות פורמליות"
             if len(title) > 100:
                 title = f"{vid} · {v['title']}"[:100]
-            name = BAD.sub("-", f"{n:02d} · {vid} · {v['title']}".replace(": ", " · ")) + ".mp4"
+            name = BAD.sub("-", f"{n:02d} · {vid} · {v['title']}".replace(": ", " · ").replace("?", "")) + ".mp4"
             shutil.copy2(mp4, dest / name)
             desc = (f"{c['title']} · {vid}{' (סרטון בונוס)' if v.get('bonus') else ''}\n\n"
                     f"{goal(c['id'], v['level'])}\n\n"
@@ -63,7 +72,7 @@ def main():
     (dest / "README.txt").write_text(
         "העלאה ל-YouTube (בערך 20–30 דקות)\n"
         "==================================\n"
-        "1. YouTube Studio ← יצירה ← העלאת סרטונים. גוררים עד 15 קבצים בכל פעם (3 סבבים).\n"
+        f"1. YouTube Studio ← יצירה ← העלאת סרטונים. גוררים עד 15 קבצים בכל פעם ({-(-len(blocks) // 15)} סבבים).\n"
         "   שם הקובץ הופך לכותרת. אפשר להשאיר אותו, או להעתיק כותרת ותיאור מ-titles_and_descriptions.txt.\n"
         "2. בכל סרטון: \"לא, הסרטון לא מיועד לילדים\". אפשר לדלג על שאר השלבים.\n"
         "3. אחרי שכולם עלו: בתוכן, מסמנים את כולם ← עריכה ← חשיפה ← \"לא רשום\" (Unlisted) ← עדכון.\n"
