@@ -13,7 +13,7 @@ speech-to-text round trip (--stt).
 
 Run:  PYTHONUTF8=1 python tools/video/vid.py F01 [--no-render] [--draft] [--stt] [--workers N]
 """
-import asyncio, difflib, hashlib, importlib.util, json, pathlib, re, shutil, subprocess, sys, wave
+import asyncio, difflib, hashlib, importlib.util, json, os, pathlib, re, shutil, subprocess, sys, wave
 
 TOOLS = pathlib.Path(__file__).resolve().parents[1]
 ROOT = TOOLS.parent
@@ -361,7 +361,10 @@ window.__timelines={{root:tl}};</script>
 # ----------------------------------------------------------------------------- render + checks
 def hf(*args, cwd):
     exe = TOOLS / "node_modules" / ".bin" / ("hyperframes.cmd" if sys.platform == "win32" else "hyperframes")
-    return subprocess.run([str(exe), *args], cwd=cwd, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    # the 60 s stall watchdog tripped on K06 (9.3 min) after every frame was captured, while the encoder drained
+    env = {**os.environ, "HF_DE_STALL_MS": os.environ.get("HF_DE_STALL_MS", "600000")}
+    return subprocess.run([str(exe), *args], cwd=cwd, env=env, capture_output=True, text=True, encoding="utf-8",
+                          errors="replace")
 
 
 def stt_check(phrases, outdir):
