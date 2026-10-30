@@ -18,19 +18,22 @@ window.VIDEO_COURSE = {
      "id": "F02",
      "level": "F02",
      "title": "מבנה של אס״ד: מצב בור, משלים ומכפלה",
-     "minutes": 7
+     "minutes": 7,
+     "youtube": "g_5m85PC5uI"
     },
     {
      "id": "F03",
      "level": "F03",
      "title": "אסל״ד, מסעי ε והשוואת שפות",
-     "minutes": 7
+     "minutes": 7,
+     "youtube": "93CKDHq8S7w"
     },
     {
      "id": "F04",
      "level": "F04",
      "title": "אוטומט החזקה וגדלים",
-     "minutes": 7
+     "minutes": 7,
+     "youtube": "DHf2o0gIW6U"
     },
     {
      "id": "F05",
@@ -43,13 +46,15 @@ window.VIDEO_COURSE = {
      "id": "F06",
      "level": "F06",
      "title": "השוואת ביטויים: שוות, מוכלת או אף אחת",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "vwkaQJBi4lU"
     },
     {
      "id": "F07",
      "level": "F07",
      "title": "מאוטומט לביטוי רגולרי",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "WV9_dprEsK0"
     },
     {
      "id": "F08",
@@ -76,7 +81,8 @@ window.VIDEO_COURSE = {
      "id": "N02",
      "level": "N02",
      "title": "Rank של שפות קטנות ומצב הבור",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "E3CWqvtVWZA"
     },
     {
      "id": "N03",
@@ -131,7 +137,8 @@ window.VIDEO_COURSE = {
      "id": "K01",
      "level": "K01",
      "title": "ההיררכיה ואלגוריתם הסיווג",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "43uFr25O2XM"
     },
     {
      "id": "K02",
@@ -144,13 +151,15 @@ window.VIDEO_COURSE = {
      "id": "K03",
      "level": "K03",
      "title": "להוכיח שפה לא רגולרית",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "4UAoWcx_WRw"
     },
     {
      "id": "K04",
      "level": "K04",
      "title": "משחק למת הניפוח לשפות רגולריות",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "0IF90uxq7yU"
     },
     {
      "id": "K05",
@@ -163,14 +172,16 @@ window.VIDEO_COURSE = {
      "id": "K06",
      "level": "K06",
      "title": "סגירויות: מה נשמר ומה נשבר",
-     "minutes": 9
+     "minutes": 9,
+     "youtube": "Tdv0m5lBtSg"
     },
     {
      "id": "K06a",
      "level": "K06",
      "title": "סגירות של שפות רגולריות",
      "bonus": true,
-     "minutes": 8
+     "minutes": 8,
+     "youtube": "zOrENd9gySY"
     },
     {
      "id": "K06b",
@@ -219,7 +230,8 @@ window.VIDEO_COURSE = {
      "id": "G03",
      "level": "G03",
      "title": "איזה דקדוק יוצר את L",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "_t82O2O6w0Y"
     },
     {
      "id": "G04",
@@ -232,7 +244,8 @@ window.VIDEO_COURSE = {
      "id": "G05",
      "level": "G05",
      "title": "אוטומט מחסנית: ריצה ו״מתקבלת״",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "2lac9wmz1JY"
     },
     {
      "id": "G06",
@@ -252,7 +265,8 @@ window.VIDEO_COURSE = {
      "id": "G08",
      "level": "G08",
      "title": "מבחן גמר: דקדוקים ואוטומט מחסנית",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "XZgm05YNGvw"
     }
    ]
   }
