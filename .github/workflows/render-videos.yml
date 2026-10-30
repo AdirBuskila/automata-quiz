@@ -46,7 +46,7 @@ jobs:
         run: |
           pip install edge-tts
           choco install ffmpeg -y --no-progress
-          cd tools && npm ci --no-audit --no-fund
+          cd tools && npm install --no-audit --no-fund --no-save hyperframes@0.8.212 katex@0.18.9 gsap@3.15.0   # versions used locally (package.json is gitignored)
       - name: Render ${{ matrix.id }}
         shell: bash
         env: { PYTHONUTF8: "1" }
