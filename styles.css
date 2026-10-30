@@ -579,6 +579,10 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
    ============================================================ */
 math{font-family:"Cambria Math","STIX Two Math","Latin Modern Math",math,serif;font-size:1.08em}
 math[display="block"]{display:block;margin:.35rem 0}
+/* Chrome does not stretch the \overline glyph (‾ shows as a tiny accent, or not at all): hide it and draw a rule
+   over the base instead. Every stretchy over-mark in the bank/courses is ‾; nested bars (\overline{\overline{L}}) stack. */
+mover:has(>mo[stretchy="true"]:last-child)>mo:last-child{color:transparent}
+mover:has(>mo[stretchy="true"]:last-child)>:first-child{border-top:.065em solid currentColor;padding-top:.06em}
 .math-block{direction:ltr;text-align:center;overflow-x:auto;overflow-y:hidden;margin:.45rem 0;padding:.15rem 0}
 .question-text math,.expl math{unicode-bidi:isolate}
 .opt-math math{font-size:1.12em}
