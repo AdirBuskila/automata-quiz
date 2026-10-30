@@ -1,0 +1,61 @@
+# Render course videos in parallel on GitHub-hosted runners (free for public repos), one job per video.
+# Windows runners: the videos use Segoe UI and Cambria Math, which only Windows has, so the output matches a local render.
+# Trigger by hand (Actions tab, or `gh workflow run render-videos.yml -f ids="F01 F02"`), or by pushing to a render/* branch
+# with the ids in videos/render_ids.txt. Download the MP4s with `gh run download <run-id>`.
+name: render-videos
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Video ids, space separated (e.g. F01 F02)"
+        required: true
+  push:
+    branches: ["render/**"]
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      ids: ${{ steps.ids.outputs.ids }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: ids
+        shell: bash
+        run: |
+          raw="${{ github.event.inputs.ids }}"
+          [ -z "$raw" ] && raw="$(cat videos/render_ids.txt)"
+          echo "ids=$(printf '%s\n' $raw | jq -R . | jq -sc .)" >> "$GITHUB_OUTPUT"
+
+  render:
+    needs: plan
+    runs-on: windows-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        id: ${{ fromJson(needs.plan.outputs.ids) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - name: Install tools
+        shell: bash
+        run: |
+          pip install edge-tts
+          choco install ffmpeg -y --no-progress
+          cd tools && npm ci --no-audit --no-fund
+      - name: Render ${{ matrix.id }}
+        shell: bash
+        env: { PYTHONUTF8: "1" }
+        run: python tools/video/vid.py ${{ matrix.id }} --workers 4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: video-${{ matrix.id }}
+          path: |
+            videos/out/${{ matrix.id }}/${{ matrix.id }}.mp4
+            videos/out/${{ matrix.id }}/frames/
+            videos/out/${{ matrix.id }}/timeline.json
+          retention-days: 14
